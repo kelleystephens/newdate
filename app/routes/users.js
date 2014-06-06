@@ -9,20 +9,8 @@ exports.dashboard = (req, res)=> {
   });
 };
 
-exports.login = (req, res, next)=> {
-  User.login(req.body, u=> {
-    if(u) {
-      req.session.userId = u._id;
-      res.redirect('/dashboard');
-    } else {
-      req.session.userId = null;
-      res.redirect('/');
-    }
-  });
-};
-
 exports.register = (req, res)=> {
-  User.register(req.body, u=> {
+  User.create(req.body, u=> {
     if(u) {
       req.session.userId = u._id;
       res.redirect('/dashboard');
@@ -37,5 +25,17 @@ exports.lookup = (req, res, next)=> {
   User.findById(req.session.userId, u=>{
     res.locals.user = u;
     next();
+  });
+};
+
+exports.login = (req, res, next)=> {
+  User.login(req.body, u=> {
+    if(u) {
+      req.session.userId = u._id;
+      res.redirect('/dashboard');
+    } else {
+      req.session.userId = null;
+      res.redirect('/');
+    }
   });
 };

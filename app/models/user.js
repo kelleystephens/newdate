@@ -1,3 +1,5 @@
+'use strict';
+
 var bcrypt = require('bcrypt');
 var userCollection = global.nss.db.collection('users');
 var Mongo = require('mongodb');
@@ -52,10 +54,6 @@ class User{
       }
     });
   }
-  //
-  // static findById(id, fn){
-  //   Base.findById(id, userCollection, User, fn);
-  // }
 }
 
 module.exports = User;
