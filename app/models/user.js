@@ -1,6 +1,7 @@
 var bcrypt = require('bcrypt');
 var userCollection = global.nss.db.collection('users');
 var Mongo = require('mongodb');
+var _ = require('lodash');
 // var traceur = require('traceur');
 // var Base = traceur.require(__dirname + '/base.js');
 
@@ -34,6 +35,18 @@ class User{
         }else{
           fn(null);
         }
+      }else{
+        fn(null);
+      }
+    });
+  }
+
+  static findById(userId, fn){
+    userId = Mongo.ObjectID(userId);
+    userCollection.findOne({_id:userId}, (e,user)=>{
+      if(user){
+        user = _.create(User.prototype, user);
+        fn(user);
       }else{
         fn(null);
       }

@@ -1,3 +1,36 @@
 extends ../shared/template
 
 block content
+  section
+    #container_demo
+      a.hiddenanchor#toregister
+      a.hiddenanchor#tologin
+      #wrapper
+        #login.aminated.form
+          form(action='mysuperscript.php' autocomplete='on')
+            h1 Log In
+            p
+              label(for='username' class='uname' data-icon='u') Your Email
+              input(id='username' name='username' required='required' type='text' placeholder='myemail@email.com')
+            p
+              label(for='password' class='youpasswd' data-icon='p') Your password
+              input(id='password' name='password' required='required' type='password' placeholder='mypassword')
+            p.login.button
+              input(type='submit' value='Login')
+            p.change_link Not A Member Yet?
+              a(href='#toregister' class='to_register') Join us
+    #register.animated.form
+      form(action='mysuperscript.php' autocomplete='on')
+        h1 Sign Up
+        p
+          label(for='usernamesignup' class='uname' data-icon='u') Your Name
+          input(id='usernamesignup' name='usernamesignup' required='required' type='text' placeholder='My Name')
+        p
+          label(for='emailsignup' class='youmail' data-icon='e') Your Email
+          input(id='emailsignup' name='emailsignup' required='required' type='email' placeholder='myemail@email.com')
+        p
+          label(for='passwordsignup' class='youpasswd' data-icon='p') Your Password
+          input(id='passwordsignup' name='passwordsignup' required='required' type='password' placeholder='password')
+        p
+          label(for='zipsignup' class='youzip' data-icon='p') Your Zipcode
+          input(id='zipsignup' name='zipsignup' required='required' type='number' placeholder='37208')
