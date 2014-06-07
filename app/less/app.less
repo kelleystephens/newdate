@@ -7,11 +7,18 @@ body {
   background-position: center center;
 }
 
+.row {
+  margin: auto;
+  text-align: center;
+}
+
 .dashboard {
   float: left;
   position: absolute;
   margin-left: 50px;
   color: white;
+  margin-top: 30px;
+  font-size: 30px;
 }
 
 .username {
@@ -19,74 +26,51 @@ body {
   float: right;
   margin-top: 30px;
   margin-right: 150px;
-  font-size: 20px;
+  font-size: 30px;
   color: white;
 }
 
-// #search.grid-8 {
-//   margin-top: 80px;
-//   border: 1px solid tomato;
-//   width: 650px;
-//   height: 200px;
-//   display: block;
-//   float: left;
-//   position: relative;
-//   margin-right: 25px;
-// }
-//
-// #profile.grid-3 {
-//   margin-top: 80px;
-//   border: 1px solid tomato;
-//   width: 250px;
-//   height: 600px;
-//   display: block;
-//   float: left;
-//   position: relative;
-// }
-//
 .container {
   width: 1000px;
   margin: auto;
 }
 
-#search.col-md-8 {
-  width: 750px;
-  height: 400px;
-  margin-left: 45px;
-  margin-top: 20px;
-  line-height: 4;
-  background-color: white;
-  border-radius: 20px;
-}
-
-#activities.col-md-8 {
+#activities {
   //border: 1px solid tomato;
-  width: 750px;
+  width: 590px;
   height: 400px;
-  margin-left: 45px;
-  margin-top: 45px;
-  background-color: rgba(255,255,255,0.2);
-  border-radius: 20px;
-}
-
-#profile.col-md-4 {
-  //border: 1px solid tomato;
-  width: 450px;
-  height: 400px;
-  margin-left: 45px;
-  margin-top: 20px;
-  background-color: rgba(255,255,255,0.2);
-  border-radius: 20px;
-}
-
-#messages.col-md-4 {
-  //border: 1px solid tomato;
-  width: 450px;
-  height: 400px;
-  margin-left: 45px;
+  margin-left: 130px;
   margin-top: 45px;
   background-color: white;
+  border-radius: 20px !important;
+  //float: right;
+}
+
+#profile {
+  //border: 1px solid tomato;
+  width: 450px;
+  height: 500px;
+  margin-left: 45px;
+  margin-top: 20px;
+  margin-right: 230px;
+  margin-bottom: 45px;
+  background-color: white;
   border-radius: 20px;
+  float: right;
+}
+
+#messages {
+  //border: 1px solid tomato;
+  width: 450px;
+  height: 454px;
+  margin-left: 745px;
+  //margin-top: 45px;
+  //background-color: rgba(255,255,255,0.2);
+  background-color: white;
+  border-radius: 20px;
+  float: right;
+  margin-right: 230px;
+  margin-top: -455px;
 }
 
 .searchzip {
@@ -96,6 +80,7 @@ body {
 .searchzip.form-control {
   width: 150px;
   display: inline;
+  margin-left: 100px;
 }
 
 select {
@@ -112,7 +97,36 @@ label {
   text-shadow: 2px 2px 2px black;
 }
 
-h3 {
-  color: white;
-  text-shadow: 2px 2px 2px black;
+// h3 {
+//   color: #666;
+//   font-weight: bold;
+//   text-align: left;
+//   //background-color: #f0f0f0;
+//   // border-radius: 20px !important;
+//   text-shadow: 1px 1px 1px #fff;
+//   padding: 5px 0px 5px 10px;
+//   margin: 10px 0px;
+//   border-bottom: 1px solid #fff;
+//   border-top: 1px solid #d9d9d9;
+// }
+
+.searchlegend {
+  text-align: center !important;
+  background-color: white !important;
+  color: #444444 !important;
+  text-shadow: none !important;
+  font-weight: normal !important;
+  border-top: none !important;
+}
+
+#rapper.step {
+  margin-top: 21px;
+  margin-left: 130px;
+  border-radius: 20px !important;
+  width: 590px;
+  background-color: white;
+}
+
+.activitiesrow {
+  padding-top: 20px;
 }
