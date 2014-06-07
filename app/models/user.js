@@ -27,13 +27,13 @@ class User{
 
   update(obj, fn){
     this.sex = obj.sex;
-    this.lookingFor = obj.lookingFor.split(',').map(s=>s.trim());;
+    this.lookingFor = obj.lookingFor.split(',').map(s=>s.trim());
     this.race = obj.race;
     this.religion = obj.religion;
     this.bodyType = obj.bodyType;
     this.height = obj.height;
     this.about = obj.about;
-    user.age = obj.age*1;
+    this.age = obj.age * 1;
     this.save(()=>fn(this));
   }
 
