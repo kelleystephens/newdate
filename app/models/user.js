@@ -20,6 +20,7 @@ class User{
         user.zip = obj.zip;
         user.bodyType = obj.bodyType;
         user.sex = obj.sex;
+        user.age = obj.age*1;
         user.lookingFor = obj.lookingFor.split(',').map(s=>s.trim());
         user.save(()=>fn(user));
       }else{
@@ -62,9 +63,9 @@ class User{
     Base.findById(id, userCollection, User, fn);
   }
 
-  // static findByLocation(zip, fn){
-  //   Base.findByLocation(zip, userCollection, User, fn);
-  // }
+  static findByLocation(zip, fn){
+    Base.findByLocation(zip, userCollection, User, fn);
+  }
 
 }
 
