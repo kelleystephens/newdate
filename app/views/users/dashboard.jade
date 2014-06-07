@@ -1,5 +1,73 @@
 extends ../shared/template
 
 block content
-  h1 Dashboard
-  a(href='/profile/#{user._id}') #{user.name}'s Profile Page
+
+  nav
+    h1.dashboard Dashboard
+    h2.username Welcome, #{user.name}
+
+  .container
+
+  .row
+    #rapper.step
+      #steps.step
+        form#formElem(name='formElem', action='', method='post')
+          fieldset.step
+            legend.searchlegend Search
+            input.searchzip.form-control(type='text', placeholder='Zip Code', name='zip')
+            p
+              label Looking For
+              select#lookingfor(name='lookingfor')
+                option(value='lookingfor') Select
+                option(value='male') Male
+                option(value='female') Female
+                option(value='male, female') Both
+            p
+              label Religion
+              select#religion(name='religion')
+                option(value='religion') Select Religion
+                option(value='christian') Christian
+                option(value='jewish') Jewish
+                option(value='muslim') Muslim
+                option(value='hindu') Hindu
+                option(value='buddhist') Buddhist
+                option(value='atheist') Atheist
+                option(value='agnostic') Agnostic
+                option(value='other') Other
+                option(value='none') None
+            p
+              label Height
+              select#height(name='height')
+                option(value='height') Select Height
+                option(value='under 4-11') Under 4'11"
+                option(value='4-11 to 5-4') 4'11" to 5'4"
+                option(value='5-5 to 5-11') 5'5" to 5'11"
+                option(value='6-0 to 6-5') 6'0" to 6'5"
+                option(value='6-5') Above 6'5"
+            p
+              label Body Type
+              select#bodytype(name='bodytype')
+                option(value='body type') Select Body Type
+                option(value='slender') Slender
+                option(value='petite') Petite
+                option(value='fit') Fit
+                option(value='athletic') Athletic
+                option(value='ripped') Ripped
+                option(value='hour glass with extra minutes') Hour Glass With Extra Minutes
+                option(value='more to love') More To Love
+                option(value='stocky') Stocky
+
+    #profile
+      a(href='/profile/#{user._id}') #{user.name}'s Profile Page
+
+  .row
+    #activities
+      h3.activitiesrow Activities
+        each activity in activities
+          .activity
+            .activityname #{activity.name}
+            .activitydate #{activity.date}
+            .activitydescription #{activity.description}
+
+    #messages
+      h3 Messages
