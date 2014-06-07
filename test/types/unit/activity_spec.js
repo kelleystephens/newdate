@@ -72,8 +72,6 @@ describe('Activity', function(){
         lng: '4.30430594'
       };
 
-      // {"name":"Cooking Class", "date":"06/14/2014", "description":"Join us at Dabble Studios for a fun lesson on how to cook a romantic dinner.", "lat": "87.345356345", "lng": "92.30430594", "address":"91 Seaboard Lane, Suite 108, Brentwood, TN 37027", "tags":"cooking"},
-
       Activity.findByLocation(obj, function (activities) {
         expect(activities).to.be.ok;
         expect(activities).to.be.an('array');
@@ -106,7 +104,6 @@ describe('Activity', function(){
       });
     });
   });
-
   // describe('.login', function(){
   //   it('should successfully login an activity', function(done){
   //     Activity.login({email:'sue@aol.com', password:'5678'}, function(a){
