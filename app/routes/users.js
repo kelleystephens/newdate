@@ -10,8 +10,14 @@ exports.logout = (req, res)=> {
   res.redirect('/');
 };
 
+exports.all = (req, res)=> {
+  User.findAll(users=>{
+    res.render('users/all', {users: users, title: 'All Users'});
+  });
+};
+
 exports.profile = (req, res)=> {
-  User.findById(req.session.userId.toString(), user=>{
+  User.findById(req.params.id.toString(), user=>{
     res.render('users/profile', {user: user, title: `${user.name}`});
   });
 };
