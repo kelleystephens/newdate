@@ -4,7 +4,7 @@ block content
 
   #rapper
     #steps
-        form#formElem(name='formElem', action='', method='post')
+        form#formElem(name='formElem', action='/dashboard', method='post', enctype='multipart/form-data')
           fieldset.step
             legend Basics
             p
@@ -80,27 +80,24 @@ block content
                 option(value='6-4') 6'4"
                 option(value='6-5') 6'5"
                 option(value='6-5') Above 6'5"
+            p
+
           fieldset.step
             legend Description
             p
               label Tell Us More About Yourself!
-              textarea#description(name='description' placeholder='Hobbies, Favorites, Likes, Dislikes')
+              textarea#description(name='description' rows='10' columns='50' placeholder='Hobbies, Favorites, Likes, Dislikes')
           fieldset.step
-            legend Account
+            legend Account - Confirm your information:
             p
               label Name
-              input#name(name='name')
+              input#name(name='name' value='#{user.name}')
             p
-              label(for='updates') Updates
-              select#updates(name='updates')
-                option(value='1', selected='selected') Package 1
-                option(value='2') Package 2
-                option(value='0') Don't send updates
+              label Email
+              input#email(name='email' value='#{user.email}')
             p
-              label(for='tagname') Newsletter Tag
-              input#tagname(name='tagname', type='text', autocomplete='OFF')
-          fieldset.step
-            legend Confirm
+              label Zip
+              input#zip(name='zip' value='#{user.zip}')
             p.submit
               button#registerButton(type='submit') Check Out My Profile!
       #navigation(style='display: none;')
@@ -113,5 +110,3 @@ block content
             a(href='#') Description
           li
             a(href='#') Account
-          li
-            a(href='#') Confirm

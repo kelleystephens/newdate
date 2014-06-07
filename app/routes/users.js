@@ -3,6 +3,11 @@
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
 
+exports.update = (req, res)=> {
+  console.log(req.body);
+  // res.redirect('/dashboard');
+};
+
 exports.profileEdit = (req, res)=> {
   res.render('users/profileEdit', {title: 'Profile Setup'});
 };
