@@ -41,8 +41,6 @@ describe('User', function(){
         expect(u.password).to.have.length(60);
         expect(u.name).to.equal('billy');
         expect(u.zip).to.equal('37203');
-        expect(u.bodyType).to.equal('Otter');
-        expect(u.age).to.equal(23);
         done();
       });
     });
@@ -129,7 +127,8 @@ describe('User', function(){
           religion: 'Jewish',
           bodyType: 'hourglass with extra minutes',
           height: '5-6',
-          about: 'I am a successful, independent black woman looking for love.'
+          about: 'I am a successful, independent black woman looking for love.',
+          lookingFor: 'Male, Female'
         };
 
         user.update(obj, function (user) {
