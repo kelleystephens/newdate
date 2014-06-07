@@ -18,6 +18,7 @@ class User{
         user.password = bcrypt.hashSync(obj.password, 8);
         user.name = obj.name;
         user.zip = obj.zip;
+        user.coordinates = obj.coordinates.map(n=>n*1);
         user.save(()=>fn(user));
       }else{
         fn(null);
@@ -60,8 +61,8 @@ class User{
     Base.findById(id, userCollection, User, fn);
   }
 
-  static findByLocation(zip, fn){
-    Base.findByLocation(zip, userCollection, User, fn);
+  static findByLocation(obj, fn){
+    Base.findByLocation(obj, userCollection, User, fn);
   }
 
 }

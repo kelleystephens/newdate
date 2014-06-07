@@ -3,12 +3,11 @@
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
 var Activity = traceur.require(__dirname + '/../models/activity.js');
+var Message = traceur.require(__dirname + '/../models/message.js');
 
 exports.profile = (req, res)=> {
   User.findById(req.session.userId.toString(), user=>{
-    Activity.findAll(activities=>{
-      res.render('users/profile', {user: user, activities: activities, title: `${user.name}`});
-    });
+    res.render('users/profile', {user: user, title: `${user.name}`});
   });
 };
 
@@ -26,8 +25,10 @@ exports.profileEdit = (req, res)=> {
 
 exports.dashboard = (req, res)=> {
   User.findById(req.session.userId.toString(), user=>{
-    Activity.findAll(activities=>{
-      res.render('users/dashboard', {user: user, activities: activities, title: 'Dashboard'});
+    Activity.findByLocation(user, activities=>{
+      Message.findAllByToUserId(user._id.toString(), messages=>{
+        res.render('users/dashboard', {user: user, activities: activities, messages: messages, title: 'Dashboard'});
+      });
     });
   });
 };
@@ -36,7 +37,7 @@ exports.register = (req, res)=> {
   User.create(req.body, u=> {
     if(u) {
       req.session.userId = u._id;
-      res.redirect(`/profile/${u._id}/setup`);
+      res.send(u);
     } else {
       req.session.userId = null;
       res.redirect('/');

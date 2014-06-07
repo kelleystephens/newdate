@@ -16,14 +16,14 @@ block content
             legend.searchlegend Search
             input.searchzip.form-control(type='text', placeholder='Zip Code', name='zip')
             p
-              label Looking For
+              label.labels Looking For
               select#lookingfor(name='lookingfor')
                 option(value='lookingfor') Select
                 option(value='male') Male
                 option(value='female') Female
                 option(value='male, female') Both
             p
-              label Religion
+              label.labels Religion
               select#religion(name='religion')
                 option(value='religion') Select Religion
                 option(value='christian') Christian
@@ -36,7 +36,7 @@ block content
                 option(value='other') Other
                 option(value='none') None
             p
-              label Height
+              label.labels Height
               select#height(name='height')
                 option(value='height') Select Height
                 option(value='under 4-11') Under 4'11"
@@ -45,7 +45,7 @@ block content
                 option(value='6-0 to 6-5') 6'0" to 6'5"
                 option(value='6-5') Above 6'5"
             p
-              label Body Type
+              label.labels Body Type
               select#bodytype(name='bodytype')
                 option(value='body type') Select Body Type
                 option(value='slender') Slender
@@ -71,3 +71,6 @@ block content
 
     #messages
       h3 Messages
+        each message in messages
+          .message(class= mesage.classes)
+            .messagesubject #{message.subject}

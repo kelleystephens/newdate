@@ -25,7 +25,7 @@ describe('User', function(){
   });
 
   beforeEach(function(done){
-    global.nss.db.collection('users').drop(function(){
+    global.nss.db.collection('users').remove(function(){
       factory('user', function(users){
         done();
       });
@@ -34,7 +34,7 @@ describe('User', function(){
 
   describe('.create', function(){
     it('should successfully create a user', function(done){
-      User.create({email:'billy@aol.com', password:'1234', bodyType: 'Otter', name: 'billy', age: '23', sex: 'male', lookingFor: 'female', zip: '37203'}, function(u){
+      User.create({email:'billy@aol.com', password:'1234', bodyType: 'Otter', name: 'billy', age: '23', sex: 'male', lookingFor: 'female', zip: '37203', coordinates: ['7.345356345', '4.30430594']}, function(u){
         expect(u).to.be.ok;
         expect(u).to.be.an.instanceof(User);
         expect(u._id).to.be.an.instanceof(Mongo.ObjectID);
@@ -152,8 +152,8 @@ describe('User', function(){
 
   describe('.findByLocation', function () {
     it('should find a user by their location', function (done) {
-      var obj = {zip: '37203'};
-      User.findByLocation(obj.zip, function (users) {
+      var obj = {coordinates: ['7.345356345', '4.30430594']};
+      User.findByLocation(obj, function (users) {
         expect(users).to.be.an('array');
         expect(users[0]).to.be.ok;
         expect(users[0]).to.be.instanceof(User);
