@@ -63,11 +63,12 @@ block content
   .row
     #activities
       h3.activitiesrow Activities
-        each activity in activities
-          .activity
-            .activityname #{activity.name}
-            .activitydate #{activity.date}
-            .activitydescription #{activity.description}
+        if(activities)
+          each activity in activities
+            .activity
+              .activityname #{activity.name}
+              .activitydate #{activity.date}
+              .activitydescription #{activity.description}
 
     #messages
       h3 Messages

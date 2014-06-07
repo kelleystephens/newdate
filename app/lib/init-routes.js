@@ -28,6 +28,8 @@ function load(app, fn){
   app.get('/profile/:id/setup', dbg, users.profileEdit);
   app.post('/profile/:id/setup', dbg, users.update);
   app.get('/profile/:id', dbg, users.profile);
+  app.get('/message/:toId', dbg, message.write);
+  app.post('/message/:toId', dbg, message.create);
 
   console.log('Routes Loaded');
   fn();
