@@ -4,17 +4,17 @@ block content
 
   #rapper
     #steps
-        form#formElem(name='formElem', action='/dashboard', method='post', enctype='multipart/form-data')
+        form#formElem(name='formElem', action='/profile/#{user.id}/setup', method='post')
           fieldset.step
             legend Basics
             p
-              label Gender
-              select#gender(name='gender')
+              label Sex
+              select#sex(name='sex')
                 option(value='male') Male
                 option(value='female') Female
             p
               label Looking For
-              select#lookingfor(name='lookingfor')
+              select#lookingFor(name='lookingFor')
                 option(value='male') Male
                 option(value='female') Female
                 option(value='male, female') Both
@@ -41,12 +41,11 @@ block content
                 option(value='agnostic') Agnostic
                 option(value='other') Other
                 option(value='none') None
-
           fieldset.step
             legend Physical
             p
               label Body Type
-              select#bodytype(name='bodytype')
+              select#bodyType(name='bodyType')
                 option(value='slender') Slender
                 option(value='petite') Petite
                 option(value='fit') Fit
@@ -55,7 +54,6 @@ block content
                 option(value='hour glass with extra minutes') Hour Glass With Extra Minutes
                 option(value='more to love') More To Love
                 option(value='stocky') Stocky
-
             p
               label Height
               select#height(name='height')
@@ -81,12 +79,12 @@ block content
                 option(value='6-5') 6'5"
                 option(value='6-5') Above 6'5"
             p
-
+              label Upload a Profile Picture
           fieldset.step
-            legend Description
+            legend About
             p
               label Tell Us More About Yourself!
-              textarea#description(name='description' rows='10' columns='50' placeholder='Hobbies, Favorites, Likes, Dislikes')
+              textarea#about(name='about' rows='10' columns='50' placeholder='Hobbies, Favorites, Likes, Dislikes')
           fieldset.step
             legend Account - Confirm your information:
             p
@@ -99,7 +97,7 @@ block content
               label Zip
               input#zip(name='zip' value='#{user.zip}')
             p.submit
-              button#registerButton(type='submit') Check Out My Profile!
+              button#registerButton Check Out My Profile!
       #navigation(style='display: none;')
         ul
           li.selected

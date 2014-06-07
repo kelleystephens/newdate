@@ -4,8 +4,11 @@ var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
 
 exports.update = (req, res)=> {
-  console.log(req.body);
-  // res.redirect('/dashboard');
+  User.findById(req.session.userId, u=>{
+    u.update(req.body, ()=>{
+    res.redirect('/dashboard');
+    });
+  });
 };
 
 exports.profileEdit = (req, res)=> {

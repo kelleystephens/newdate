@@ -27,6 +27,7 @@ class User{
 
   update(obj, fn){
     this.sex = obj.sex;
+    this.lookingFor = obj.lookingFor;
     this.race = obj.race;
     this.religion = obj.religion;
     this.bodyType = obj.bodyType;
