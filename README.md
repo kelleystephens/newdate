@@ -1,9 +1,2 @@
-Server Template
+Find your better half!
 ===============
-
-- Node.js
-- Express
-- MongoDB
-- Traceur
-- Jade
-- Less

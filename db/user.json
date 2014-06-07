@@ -1,0 +1,7 @@
+[
+  {"name": "bill", "email":"bill@aol.com", "sex": "male","lookingFor": "female", "zip": "37203", "password":"1234", "_id":"0123456789abcdef01234567"},
+  {"name": "sue", "email":"sue@aol.com", "sex": "female","lookingFor": "male", "zip": "37203", "password":"5678", "_id":"0123456789abcdef01234568"},
+  {"name": "sam", "email":"sam@aol.com", "sex": "male","lookingFor": "male, female", "zip": "37203", "password":"90ab"},
+  {"name": "amy", "email":"amy@aol.com", "sex": "female","lookingFor": "female", "zip": "37203", "password":"cdef"},
+  {"name": "cat", "email":"cat@aol.com", "sex": "female","lookingFor": "male, female", "zip": "37203", "password":"ghij"}
+]

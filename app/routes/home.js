@@ -1,5 +1,5 @@
 'use strict';
 
 exports.index = (req, res)=>{
-  res.render('home/index', {title: 'Dating App'});
+  res.render('home/index', {title: 'Dating'});
 };

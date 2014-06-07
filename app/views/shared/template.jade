@@ -4,90 +4,54 @@ html
     meta(charset='utf-8')
     title= title
     link(rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
-    link(rel='shortcut icon' href='../favicon.ico')
+    link(href='//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' rel='stylesheet')
+    link(href='/css/style.css', rel='stylesheet')
+    link(href='/css/animate-custom.css', rel='stylesheet')
+    link(href='/css/style3.css', rel='stylesheet')
     link(href='/less/app.css', rel='stylesheet')
-    link(rel='stylesheet' type='text/css' href='css/animate-custom.css')
+
   body
-
-    div#container_demo
-      // hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4
-      a#toregister.hiddenanchor
-      a#tologin.hiddenanchor
-      div#wrapper
-        div#login.animate.form
-          form(action='mysuperscript.php', autocomplete='on')
-            h1 Log in
-            p
-              label.uname(for='username')  Your email
-              input#username(name='username', required='required', type='text', placeholder='mymail@mail.com')
-            p
-              label.youpasswd(for='password')  Your password
-              input#password(name='password', required='required', type='password', placeholder='eg. X8df!90EO')
-            p.keeplogin
-              input#loginkeeping(type='checkbox', name='loginkeeping', value='loginkeeping')
-              label(for='loginkeeping') Keep me logged in
-            p.login.button
-              input(type='submit', value='Login')
-            p.change_link
-              | Not a member yet ?
-              a.to_register(href='#toregister') Join us
-        div#register.animate.form
-          form(action='mysuperscript.php', autocomplete='on')
-            h1  Sign up
-            p
-              label.uname(for='usernamesignup') Your Name
-              input#usernamesignup(name='usernamesignup', required='required', type='text', placeholder='Name')
-            p
-              label.youmail(for='emailsignup')  Your email
-              input#emailsignup(name='emailsignup', required='required', type='email', placeholder='Email')
-            p
-              label.youpasswd(for='passwordsignup') Your password
-              input#passwordsignup(name='passwordsignup', required='required', type='password', placeholder='Password')
-            p
-              label.youpasswd(for='passwordsignup_confirm') Your Zip Code
-              input#passwordsignup_confirm(name='passwordsignup_confirm', required='required', type='text', placeholder='Zip Code')
-            p.signin.button
-              input(type='submit', value='Sign up')
-            p.change_link
-              | Already a member ?
-              a.to_register(href='#tologin')  Go and log in
-
-
-    //- .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
-    //-     .container-fuild
-    //-         .nav-bar-header
-    //-             button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-    //-                 span.sr-only Toggle navigation
-    //-                 span.icon-bar
-    //-                 span.icon-bar
-    //-                 span.icon-bar
-    //-         .navbar-collapse.collapse
-    //-           form.navbar-form.navbar-right(action='/login', method='POST')
-    //-             .form-group
-    //-               input.form-control.email(type='email', name='email' placeholder='Email')
-    //-             .form-group
-    //-               input.form-control.password(type='password', name='password' placeholder='Password')
-    //-             button.signin.btn.btn-success.login Login
-    //-             button.register.btn.btn-warning.btn.btn-primary.btn(type='submit', data-toggle='modal', data-target='#myModal') Register
-    //-
-    //- .modal.fade#myModal(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-    //-     .modal-dialog
-    //-       .modal-content
-    //-         .modal-header
-    //-           button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
-    //-           h4.modal-title#myModalLable Registration Form
-    //-         .modal-body
-    //-           #registration
-    //-             form(action='/register', method='POST')
-    //-               input.form-control.regname(type='text', name='name', placeholder='Name', required='required')
-    //-               input.form-control.regemail(type='email', name='email', placeholder='Email', required='required')
-    //-               input.form-control.regpassword(type='password', name='password', placeholder='Password', required='required')
-    //-               input.form-control.regzip(type='text', name='zip', placeholder='Zip Code', required='required')
-    //-
-    //-
-    //-               .modal-footer
-    //-                 button.submit.btn.btn-info Submit
-
+    if(!user)
+      div#container_demo
+        // hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4
+        a#toregister.hiddenanchor
+        a#tologin.hiddenanchor
+        div#wrapper
+          div#login.animate.form
+            form(action='/login', method='post', autocomplete='on')
+              h1 Log in
+              p
+                label.uname(for='username' data-icon='u')  Your email
+                input#username(name='email', required='required', type='text', placeholder='mymail@mail.com')
+              p
+                label.youpasswd(for='password' data-icon='p')  Your password
+                input#password(name='password', required='required', type='password', placeholder='eg. X8df!90EO')
+              p.login.button
+                input(type='submit', value='Login')
+              p.change_link
+                | Not a member yet ?
+                a.to_register(href='#toregister') Join us
+          div#register.animate.form
+            form(action='/register', method='post', autocomplete='on')
+              h1  Sign up
+              p
+                label.uname(data-icon='u') Your Name
+                input#usernamesignup(name='name', required='required', type='text', placeholder='Name')
+              p
+                label.youmail(data-icon='e')  Your email
+                input#emailsignup(name='email', required='required', type='email', placeholder='Email')
+              p
+                label.youpasswd(data-icon='p') Your password
+                input#passwordsignup(name='password', required='required', type='password', placeholder='Password')
+              p
+                label.youpasswd Your Zip Code
+                  i.fa.fa-map-marker.fa-lg
+                input#passwordsignup_confirm(name='zip', required='required', type='text', placeholder='Zip Code')
+              p.signin.button
+                input(type='submit', value='Sign up')
+              p.change_link
+                | Already a member ?
+                a.to_register(href='#tologin')  Go and log in
 
     block content
 
@@ -95,6 +59,7 @@ html
     script(src='/js/vendor/lodash-2.4.1.js')
     script(src='/js/vendor/moment-2.6.0.js')
     script(src='/js/vendor/traceur.js')
+    script(src='/js/vendor/sliding.form.js')
     script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
     //- script(src='/socket.io/socket.io.js')
     script(src='/js/es5/main.js')

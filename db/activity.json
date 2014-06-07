@@ -1,0 +1,5 @@
+[
+  {"_id": "0123456789abcdef01234568", "name":"Happy Hour", "date":"06/21/2014", "description":"Come on out to the Flyer Saucer for drinks and dating.", "lat": "7.345356345", "lng": "4.43543465", "address":"111 10th Avenue South, Nashville, TN 37203", "tags":"happy hour"},
+  {"_id": "abcdef1234567890abcdef12", "name":"Cooking Class", "date":"06/25/2014", "description":"This cooking class is a great way to meet people while making delicious meals.", "lat": "36.0074", "lng": "86.7912", "address": "91 Seaboard Ln Ste 108, Brentwood, TN 37027", "tags": "cooking class"},
+  {"_id": "0987654321abcdef12345678", "name":"Dance Night", "date":"07/01/2014", "description": "Come meet some locals who enjoy dancing.", "lat": "23.7856", "lng": "12.0293", "address": "123 Anywhere St, Nashville, TN 37219", "tags": "dancing"}
+]
