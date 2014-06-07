@@ -40,7 +40,7 @@ class Base{
   //     fn(objs);
   //   });
   // }
-  //
+
 
 
   static findAll(collection, model, fn){

@@ -21,6 +21,9 @@ class User{
         user.password = bcrypt.hashSync(obj.password, 8);
         user.name = obj.name;
         user.zip = obj.zip;
+        user.bodyType = obj.bodyType;
+        user.sex = obj.sex;
+        user.lookingFor = obj.lookingFor.split(',').map(s=>s.trim());
         user.save(()=>fn(user));
       }else{
         fn(null);
