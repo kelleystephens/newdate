@@ -25,6 +25,8 @@ function load(app, fn){
   app.post('/register', dbg, users.register);
   app.get('/dashboard', dbg, users.dashboard);
   app.get('/profile/:id/setup', dbg, users.profileEdit);
+  app.post('/profile/:id/setup', dbg, users.update);
+  app.get('/profile/:id', dbg, users.profile);
 
   console.log('Routes Loaded');
   fn();

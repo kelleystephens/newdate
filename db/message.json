@@ -1,0 +1,26 @@
+[
+  {
+    "_id" : "539260a9db70807210dcda66",
+    "toUserId" : "0123456789abcdef01234568",
+    "fromUserId" : "0123456789abcdef01234567",
+    "isRead" : false,
+    "subject" : "Hot stuff",
+    "body" : "Hey there good lookin."
+  },
+  {
+    "_id" : "539260a9db70807210dcda67",
+    "toUserId" : "0123456789abcdef01234568",
+    "fromUserId" : "0123456789abcdef01234567",
+    "isRead" : false,
+    "subject" : "Howdy",
+    "body" : "So hot. Lemme buy u a drank."
+  },
+  {
+    "_id" : "539260a9db70807210dcda68",
+    "toUserId" : "0123456789abcdef01234560",
+    "fromUserId" : "0123456789abcdef01234569",
+    "isRead" : false,
+    "subject" : "Hey",
+    "body" : "You seem cool. Wanna talk?"
+  }
+]
