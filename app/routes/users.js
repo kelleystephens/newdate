@@ -2,6 +2,7 @@
 
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
+var Activity = traceur.require(__dirname + '/../models/activity.js');
 
 exports.profile = (req, res)=> {
   res.render('users/profile');
@@ -21,7 +22,9 @@ exports.profileEdit = (req, res)=> {
 
 exports.dashboard = (req, res)=> {
   User.findById(req.session.userId.toString(), user=>{
-    res.render('users/dashboard', {user: user, title: 'Dashboard'});
+    Activity.findAll(activities=>{
+      res.render('users/dashboard', {user: user, activities: activities, title: 'Dashboard'});
+    });
   });
 };
 
