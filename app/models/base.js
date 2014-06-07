@@ -20,10 +20,12 @@ class Base{
     });
   }
 
-  static findByLocation(zip, collection, model, fn){
-    collection.find({zip:zip}).toArray((e,objs)=>{
-      objs = objs.map(o=>_.create(model.prototype, o));
-      fn(objs);
+  static findByLocation(obj, collection, model, fn){
+    var lat = obj.coordinates[0] * 1;
+    var lng = obj.coordinates[1] * 1;
+    collection.find({'coordinates':{$nearSphere:[lat, lng],$maxDistance:500000}}).toArray(function(err, records){
+      records = records.map(r=>_.create(model.prototype, r));
+      fn(records);
     });
   }
 

@@ -40,8 +40,7 @@ describe('Activity', function(){
         date:'6/13/2014',
         description:'Join us for some serious herpderp.',
         address:'91 Herp Lane, Suite 108, Brentwood, TN 37208',
-        lat: '87.124235356',
-        lng: '92.249863579847',
+        coordinates: ['87.124235356', '92.249863579847'],
         tags:'herping, derping'
       };
 
@@ -67,10 +66,7 @@ describe('Activity', function(){
 
   describe('.findByLocation', function () {
     it('should find an activity by a current location', function (done) {
-      var obj = {
-        lat: '7.345356345',
-        lng: '4.30430594'
-      };
+      var obj= {coordinates: ['7.345356345', '4.30430594']};
 
       Activity.findByLocation(obj, function (activities) {
         expect(activities).to.be.ok;
@@ -104,70 +100,5 @@ describe('Activity', function(){
       });
     });
   });
-  // describe('.login', function(){
-  //   it('should successfully login an activity', function(done){
-  //     Activity.login({email:'sue@aol.com', password:'5678'}, function(a){
-  //       expect(a).to.be.ok;
-  //       done();
-  //     });
-  //   });
-  //
-  //   it('should NOT login activity - bad email', function(done){
-  //     Activity.login({email:'wrong@aol.com', password:'5678'}, function(a){
-  //       expect(a).to.be.null;
-  //       done();
-  //     });
-  //   });
-  //
-  //   it('should NOT login activity - bad password', function(done){
-  //     Activity.login({email:'sue@aol.com', password:'wrong'}, function(a){
-  //       expect(a).to.be.null;
-  //       done();
-  //     });
-  //   });
-  // });
-  //
-  //
-  //   it('should return a null activity object', function (done) {
-  //     Activity.findById('538de154065c89565f9bde6c', function (activity) {
-  //       expect(activity).to.be.null;
-  //       done();
-  //     });
-  //   });
-  // });
-  //
-  //
-  // describe('#update', function () {
-  //   it('should update an activity', function (done) {
-  //     Activity.findById('0123456789abcdef01234568', function (activity) {
-  //
-  //       var obj = {
-  //         sex: 'female',
-  //         race: 'black',
-  //         religion: 'Jewish',
-  //         bodyType: 'hourglass with extra minutes',
-  //         height: '5-6',
-  //         about: 'I am a successful, independent black woman looking for love.'
-  //       };
-  //
-  //       activity.update(obj, function (activity) {
-  //         expect(activity).to.be.ok;
-  //         expect(activity).to.be.instanceof(Activity);
-  //         expect(activity._id).to.be.instanceof(Mongo.ObjectID);
-  //         expect(activity._id.toString()).to.deep.equal('0123456789abcdef01234568');
-  //         expect(activity.email).to.equal('sue@aol.com');
-  //         expect(activity.zip).to.equal('37203');
-  //         expect(activity.sex).to.equal('female');
-  //         expect(activity.race).to.equal('black');
-  //         expect(activity.religion).to.equal('Jewish');
-  //         expect(activity.bodyType).to.equal('hourglass with extra minutes');
-  //         expect(activity.height).to.equal('5-6');
-  //         expect(activity.about).to.equal('I am a successful, independent black woman looking for love.');
-  //         done();
-  //       });
-  //     });
-  //   });
-  // });
-  //
 
 });

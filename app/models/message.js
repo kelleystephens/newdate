@@ -1,14 +1,15 @@
 var messageCollection = global.nss.db.collection('messages');
 var Mongo = require('mongodb');
 var _ = require('lodash');
-// var traceur = require('traceur');
-// var Base = traceur.require(__dirname + '/base.js');
+var traceur = require('traceur');
+var Base = traceur.require(__dirname + '/base.js');
 
 class Message{
   static create(obj, fn){
     var message = new Message();
     message._id = Mongo.ObjectID(obj._id);
     message.toUserId = Mongo.ObjectID(obj.toUserId);
+    message.to = obj.to;
     message.fromUserId = Mongo.ObjectID(obj.fromUserId);
     message.isRead = false;
     message.subject = obj.subject;
@@ -33,25 +34,26 @@ class Message{
       fn(objs);
     });
   }
-  // static findByLocation(obj, fn){
-  //   var lat = obj.lat * 1;
-  //   var lng = obj.lng * 1;
-  //   activityCollection.find({'coordinates':{$nearSphere:[lat, lng],$maxDistance:500000}}).toArray(function(err, records){
-  //     console.log(err);
-  //     console.log(lat);
-  //     console.log(lng);
-  //     records = records.map(r=>_.create(Activity.prototype, r));
-  //     fn(records);
-  //   });
-  // }
-  //
-  // static findAll(fn){
-  //   Base.findAll(activityCollection, Activity, fn);
-  // }
-  //
-  // static findById(id, fn){
-  //   Base.findById(id, activityCollection, Activity, fn);
-  // }
+
+  static findById(messageId, fn){
+    Base.findById(messageId, messageCollection, Message, fn);
+  }
+
+  read(fn){
+    this.isRead = true;
+    fn(this);
+  }
+
+  get classes(){
+    var classes = [];
+
+    if(!this.isRead){
+      classes.push('unread');
+    }
+
+    return classes.join(' ');
+  }
+
 }
 
 module.exports = Message;

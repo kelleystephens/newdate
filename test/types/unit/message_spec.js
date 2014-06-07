@@ -38,6 +38,7 @@ describe('Message', function(){
       var obj = {
         fromUserId:'0123456789abcdef01234567',
         toUserId:'0123456789abcdef01234568',
+        to: 'George Hamilton',
         subject:'Hot stuff',
         body:'Hey there good lookin.',
       };
@@ -48,7 +49,8 @@ describe('Message', function(){
         expect(m._id).to.be.an.instanceof(Mongo.ObjectID);
         expect(m.fromUserId.toString()).to.equal('0123456789abcdef01234567');
         expect(m.toUserId.toString()).to.equal('0123456789abcdef01234568');
-        expect(moment(m.sentDate).format('MM/DD/YYYY')).to.equal('06/06/2014');
+        expect(m.to).to.equal('George Hamilton');
+        expect(moment(m.sentDate).format('MM/DD/YYYY')).to.equal(moment().format('MM/DD/YYYY'));
         expect(m.subject).to.equal('Hot stuff');
         expect(m.body).to.equal('Hey there good lookin.');
         expect(m.isRead).to.not.be.ok;
@@ -77,6 +79,31 @@ describe('Message', function(){
         expect(messages[0]).to.be.instanceof(Message);
         // expect(messages[0].subject).to.equal('Hot stuff');
         done();
+      });
+    });
+  });
+
+  describe('.findById', function () {
+    it('should find a message by its id', function (done) {
+      Message.findById('539260a9db70807210dcda66', function (message) {
+        expect(message).to.be.ok;
+        expect(message._id.toString()).to.equal('539260a9db70807210dcda66');
+        expect(message).to.be.instanceof(Message);
+        done();
+      });
+    });
+  });
+
+  describe('#read', function () {
+    it('should set a message status to read', function (done) {
+      Message.findById('539260a9db70807210dcda66', function (message) {
+        message.read(function (m) {
+          expect(m).to.be.ok;
+          expect(m.isRead).to.be.true;
+          expect(m._id.toString()).to.equal('539260a9db70807210dcda66');
+          expect(m).to.be.instanceof(Message);
+          done();
+        });
       });
     });
   });
