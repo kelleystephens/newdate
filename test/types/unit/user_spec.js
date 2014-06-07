@@ -34,13 +34,14 @@ describe('User', function(){
 
   describe('.create', function(){
     it('should successfully create a user', function(done){
-      User.create({email:'billy@aol.com', password:'1234', name: 'billy', zip: '37203'}, function(u){
+      User.create({email:'billy@aol.com', password:'1234', bodyType: 'Otter', name: 'billy', sex: 'male', lookingFor: 'female', zip: '37203'}, function(u){
         expect(u).to.be.ok;
         expect(u).to.be.an.instanceof(User);
         expect(u._id).to.be.an.instanceof(Mongo.ObjectID);
         expect(u.password).to.have.length(60);
         expect(u.name).to.equal('billy');
         expect(u.zip).to.equal('37203');
+        expect(u.bodyType).to.equal('Otter');
         done();
       });
     });
