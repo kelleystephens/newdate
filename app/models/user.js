@@ -60,9 +60,9 @@ class User{
     Base.findById(id, userCollection, User, fn);
   }
 
-  // static findByLocation(zip, fn){
-  //   Base.findByLocation(zip, userCollection, User, fn);
-  // }
+  static findByLocation(zip, fn){
+    Base.findByLocation(zip, userCollection, User, fn);
+  }
 
 }
 
