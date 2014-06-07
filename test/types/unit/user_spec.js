@@ -1,4 +1,4 @@
-/* global describe, it, before, beforeEach */
+/* global describe, it, before, beforeEach, afterEach */
 /* jshint expr:true */
 
 'use strict';
@@ -11,6 +11,8 @@ var app = require('../../../app/app');
 var request = require('supertest');
 var traceur = require('traceur');
 var factory = traceur.require(__dirname + '/../../helpers/factory.js');
+var cp = require('child_process');
+var fs = require('fs');
 
 var User;
 
@@ -26,15 +28,42 @@ describe('User', function(){
 
   beforeEach(function(done){
     global.nss.db.collection('users').remove(function(){
-      factory('user', function(users){
-        done();
+      cp.execFile(__dirname + '/../../pictures/before.sh', {cwd:__dirname + '/../../pictures'}, function(err, stdout, stderr){
+        factory('user', function(users){
+          done();
+        });
       });
+    });
+  });
+
+  afterEach(function(done){
+    cp.execFile(__dirname + '/../../pictures/after.sh', {cwd:__dirname + '/../../pictures'}, function(err, stdout, stderr){
+      done();
     });
   });
 
   describe('.create', function(){
     it('should successfully create a user', function(done){
-      User.create({email:'billy@aol.com', password:'1234', bodyType: 'Otter', name: 'billy', age: '23', sex: 'male', lookingFor: 'female', zip: '37203', coordinates: ['7.345356345', '4.30430594']}, function(u){
+      var fields = {
+        email:'billy@aol.com',
+        password:'1234',
+        bodyType: 'Otter',
+        name: 'billy',
+        age: '23',
+        sex: 'male',
+        lookingFor: 'female',
+        zip: '37203',
+        coordinates: ['7.345356345', '4.30430594']
+      };
+
+      var files = {photo: [{originalFilename: 'profilePic6.jpg', path: '../../test/pictures/copy/profilePic6.jpg', size: 10}]};
+      fields.photo = files.photo;
+
+      User.create(fields, function(u){
+
+        var imgExists = fs.existsSync(__dirname + '/../../../app/static/img/pictures/profilePic6.jpg');
+        expect(imgExists).to.be.true;
+
         expect(u).to.be.ok;
         expect(u).to.be.an.instanceof(User);
         expect(u._id).to.be.an.instanceof(Mongo.ObjectID);
