@@ -3,17 +3,67 @@ html
   head
     meta(charset='utf-8')
     title= title
+    link(rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+    link(href='//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' rel='stylesheet')
+    link(href='/css/style.css', rel='stylesheet')
+    link(href='/css/animate-custom.css', rel='stylesheet')
+    link(href='/css/style3.css', rel='stylesheet')
     link(href='/less/app.css', rel='stylesheet')
+
   body
+    if(!user)
+      div#container_demo
+        // hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4
+        a#toregister.hiddenanchor
+        a#tologin.hiddenanchor
+        div#wrapper
+          div#login.animate.form
+            form(action='/login', method='post', autocomplete='on')
+              h1 Log in
+              p
+                label.uname(for='username' data-icon='u')  Your email
+                input#username(name='email', required='required', type='text', placeholder='mymail@mail.com')
+              p
+                label.youpasswd(for='password' data-icon='p')  Your password
+                input#password(name='password', required='required', type='password', placeholder='eg. X8df!90EO')
+              p.login.button
+                input(type='submit', value='Login')
+              p.change_link
+                | Not a member yet ?
+                a.to_register(href='#toregister') Join us
+          div#register.animate.form
+            form(action='/register', method='post', autocomplete='on')
+              h1  Sign up
+              p
+                label.uname(data-icon='u') Your Name
+                input#usernamesignup(name='name', required='required', type='text', placeholder='Name')
+              p
+                label.youmail(data-icon='e')  Your email
+                input#emailsignup(name='email', required='required', type='email', placeholder='Email')
+              p
+                label.youpasswd(data-icon='p') Your password
+                input#passwordsignup(name='password', required='required', type='password', placeholder='Password')
+              p
+                label.youpasswd Your Zip Code
+                  i.fa.fa-map-marker.fa-lg
+                input#passwordsignup_confirm(name='zip', required='required', type='text', placeholder='Zip Code')
+              p.signin.button
+                input(type='submit', value='Sign up')
+              p.change_link
+                | Already a member ?
+                a.to_register(href='#tologin')  Go and log in
+
     block content
 
     script(src='/js/vendor/jquery-2.1.1.js')
     script(src='/js/vendor/lodash-2.4.1.js')
     script(src='/js/vendor/moment-2.6.0.js')
     script(src='/js/vendor/traceur.js')
-    script(src='/socket.io/socket.io.js')
+    script(src='/js/vendor/sliding.form.js')
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+    //- script(src='/socket.io/socket.io.js')
     script(src='/js/es5/main.js')
     script(src='/js/es6/compiled/main.js')
-    script(src='/js/es6/compiled/sockets.js')
+    //- script(src='/js/es6/compiled/sockets.js')
 
     block scripts

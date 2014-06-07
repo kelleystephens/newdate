@@ -1,8 +1,11 @@
+'use strict';
+
 var bcrypt = require('bcrypt');
 var userCollection = global.nss.db.collection('users');
 var Mongo = require('mongodb');
 var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
+
 
 class User{
   static create(obj, fn){
