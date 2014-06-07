@@ -5,7 +5,11 @@ var User = traceur.require(__dirname + '/../models/user.js');
 var Activity = traceur.require(__dirname + '/../models/activity.js');
 
 exports.profile = (req, res)=> {
-  res.render('users/profile');
+  User.findById(req.session.userId.toString(), user=>{
+    Activity.findAll(activities=>{
+      res.render('users/profile', {user: user, activities: activities, title: `${user.name}`});
+    });
+  });
 };
 
 exports.update = (req, res)=> {
