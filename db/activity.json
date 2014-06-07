@@ -1,8 +1,3 @@
 [
-  {"name":"Cooking Class", "date":"06/14/2014", "description":"Join us at Dabble Studios for a fun lesson on how to cook a romantic dinner.", "zip":"37027", "address":"91 Seaboard Lane, Suite 108, Brentwood, TN 37027", "tags":"cooking"},
-  {"name":"Happy Hour", "date":"06/21/2014", "description":"Come on out to the Flyer Saucer for drinks and dating.", "zip":"37203", "address":"111 10th Avenue South, Nashville, TN 37203", "tags":"happy hour"},
-  {"name":"Zipline", "date":"07/19/2014", "description":"Adventureworks will be hosting an adventurous ziplining activity for all.", "zip":"37082", "address":"1300 Narrows of Harpeth Road, Kingston Springs, TN 37082", "tags":"zipline"},
-  {"name":"Indoor Rock Climbing", "date":"06/28/2014", "description":"Show off your impressive climbing skills at Climb Nashville.", "zip":"37209", "address":"3630 Redmond Street, #1, 37209", "tags":"rock climbing"},
-  {"name":"Dance Lessons", "date":"07/12/2014", "description":"Dance the night away at Dance World.", "zip":"37210", "address":"630 Rundle Avenue, 37210", "tags":"dance"},
-  {"name":"Wine Tasting", "date":"07/05/2014", "description":"Enjoy the beauty and wine of Arrington Vineyards.", "zip":"37014", "address":"6211 Patton Road, Arington, TN 37014", "tags":"wine"}
+  {"_id": "0123456789abcdef01234568", "name":"Happy Hour", "date":"06/21/2014", "description":"Come on out to the Flyer Saucer for drinks and dating.", "lat": "7.345356345", "lng": "4.43543465", "address":"111 10th Avenue South, Nashville, TN 37203", "tags":"happy hour"}
 ]

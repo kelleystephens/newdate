@@ -83,22 +83,84 @@ describe('User', function(){
     });
   });
 
-  // describe('.findById', function () {
-  //   it('should return a user with matching credentials', function (done) {
-  //     User.findById(sue._id, function (user) {
-  //       expect(user).to.be.instanceof(User);
-  //       expect(user.email).to.equal(sue.email);
-  //       done();
-  //     });
-  //   });
-  //
-  //   it('should return a null user object', function (done) {
-  //     User.findById('538de154065c89565f9bde6c', function (user) {
-  //       expect(user).to.be.null;
-  //       done();
-  //     });
-  //   });
-  // });
+  describe('.findById', function () {
+    it('should return a user with matching credentials', function (done) {
+      User.findById('0123456789abcdef01234568', function (user) {
+        expect(user).to.be.ok;
+        expect(user).to.be.instanceof(User);
+        expect(user.email).to.equal('sue@aol.com');
+        done();
+      });
+    });
 
+    it('should return a null user object', function (done) {
+      User.findById('538de154065c89565f9bde6c', function (user) {
+        expect(user).to.be.null;
+        done();
+      });
+    });
+  });
+
+  describe('#save', function () {
+    it('should save a user', function (done) {
+      User.findById('0123456789abcdef01234568', function (user) {
+        user.name = 'susan';
+        user.save(function (user) {
+          expect(user).to.be.ok;
+          expect(user).to.be.instanceof(User);
+          expect(user.email).to.equal('sue@aol.com');
+          expect(user.name).to.equal('susan');
+          expect(user.zip).to.equal('37203');
+          done();
+        });
+      });
+    });
+  });
+
+  describe('#update', function () {
+    it('should update a user', function (done) {
+      User.findById('0123456789abcdef01234568', function (user) {
+
+        var obj = {
+          sex: 'female',
+          race: 'black',
+          religion: 'Jewish',
+          bodyType: 'hourglass with extra minutes',
+          height: '5-6',
+          about: 'I am a successful, independent black woman looking for love.'
+        };
+
+        user.update(obj, function (user) {
+          expect(user).to.be.ok;
+          expect(user).to.be.instanceof(User);
+          expect(user._id).to.be.instanceof(Mongo.ObjectID);
+          expect(user._id.toString()).to.deep.equal('0123456789abcdef01234568');
+          expect(user.email).to.equal('sue@aol.com');
+          expect(user.zip).to.equal('37203');
+          expect(user.sex).to.equal('female');
+          expect(user.race).to.equal('black');
+          expect(user.religion).to.equal('Jewish');
+          expect(user.bodyType).to.equal('hourglass with extra minutes');
+          expect(user.height).to.equal('5-6');
+          expect(user.about).to.equal('I am a successful, independent black woman looking for love.');
+          done();
+        });
+      });
+    });
+  });
+
+  describe('.findByLocation', function () {
+    it('should find a user by their location', function (done) {
+      var obj = {zip: '37203'};
+      User.findByLocation(obj.zip, function (users) {
+        expect(users).to.be.an('array');
+        expect(users[0]).to.be.ok;
+        expect(users[0]).to.be.instanceof(User);
+        expect(users[0]._id).to.be.instanceof(Mongo.ObjectID);
+        expect(users[0].zip).to.equal('37203');
+        done();
+      });
+    });
+  });
 
 });
