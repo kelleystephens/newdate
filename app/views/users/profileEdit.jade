@@ -1,0 +1,110 @@
+extends ../shared/template
+
+block content
+
+  #rapper
+    #steps
+        form#formElem(name='formElem', action='/profile/#{user.id}/setup', method='post')
+          fieldset.step
+            legend Basics
+            p
+              label Sex
+              select#sex(name='sex')
+                option(value='male') Male
+                option(value='female') Female
+            p
+              label Looking For
+              select#lookingFor(name='lookingFor')
+                option(value='male') Male
+                option(value='female') Female
+                option(value='male, female') Both
+            p
+              label Race
+              select#race(name='race')
+                option(value='white') White
+                option(value='black') Black
+                option(value='asian') Asian
+                option(value='american indian') American Indian
+                option(value='pacific islander') Pacific Islander
+                option(value='hispanic') Hispanic
+                option(value='mixed') Mixed
+                option(value='other') Other
+            p
+              label Religion
+              select#religion(name='religion')
+                option(value='christian') Christian
+                option(value='jewish') Jewish
+                option(value='muslim') Muslim
+                option(value='hindu') Hindu
+                option(value='buddhist') Buddhist
+                option(value='atheist') Atheist
+                option(value='agnostic') Agnostic
+                option(value='other') Other
+                option(value='none') None
+          fieldset.step
+            legend Physical
+            p
+              label Age
+              input#age(name='age' type='number' min='18' placeholder='31')
+            p
+              label Body Type
+              select#bodyType(name='bodyType')
+                option(value='slender') Slender
+                option(value='petite') Petite
+                option(value='fit') Fit
+                option(value='athletic') Athletic
+                option(value='ripped') Ripped
+                option(value='hour glass with extra minutes') Hour Glass With Extra Minutes
+                option(value='more to love') More To Love
+                option(value='stocky') Stocky
+            p
+              label Height
+              select#height(name='height')
+                option(value='under 4-11') Under 4'11"
+                option(value='4-11') 4'11"
+                option(value='5-0') 5'0"
+                option(value='5-1') 5'1"
+                option(value='5-2') 5'2"
+                option(value='5-3') 5'3"
+                option(value='5-4') 5'4"
+                option(value='5-5') 5'5"
+                option(value='5-6') 5'6"
+                option(value='5-7') 5'7"
+                option(value='5-8') 5'8"
+                option(value='5-9') 5'9"
+                option(value='5-10') 5'10"
+                option(value='5-11') 5'11"
+                option(value='6-0') 6'0"
+                option(value='6-1') 6'1"
+                option(value='6-2') 6'2"
+                option(value='6-3') 6'3"
+                option(value='6-4') 6'4"
+                option(value='6-5') 6'5"
+                option(value='6-5') Above 6'5"
+            p
+              label Upload a Profile Picture
+          fieldset.step
+            legend About
+            p
+              label Tell Us More About Yourself!
+              textarea#about(name='about' rows='10' columns='50' placeholder='Hobbies, Favorites, Likes, Dislikes')
+          fieldset.step
+            legend Account - Confirm your information:
+            p
+              label Name
+              input#name(name='name' value='#{user.name}')
+            p
+              label Email
+              input#email(name='email' value='#{user.email}')
+            p.submit
+              button#registerButton Check Out My Profile!
+      #navigation(style='display: none;')
+        ul
+          li.selected
+            a(href='#') Basics
+          li
+            a(href='#') Physical
+          li
+            a(href='#') Description
+          li
+            a(href='#') Account
