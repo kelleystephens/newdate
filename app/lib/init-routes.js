@@ -16,6 +16,7 @@ module.exports = (req, res, next)=>{
 function load(app, fn){
   var home = traceur.require(__dirname + '/../routes/home.js');
   var users = traceur.require(__dirname + '/../routes/users.js');
+  var messages = traceur.require(__dirname + '/../routes/messages.js');
 
   app.all('*', users.lookup);
 
@@ -28,8 +29,8 @@ function load(app, fn){
   app.get('/profile/:id/setup', dbg, users.profileEdit);
   app.post('/profile/:id/setup', dbg, users.update);
   app.get('/profile/:id', dbg, users.profile);
-  app.get('/message/:toId', dbg, message.write);
-  app.post('/message/:toId', dbg, message.create);
+  app.get('/message/:toId', dbg, messages.write);
+  app.post('/message/:toId', dbg, messages.create);
 
   console.log('Routes Loaded');
   fn();
