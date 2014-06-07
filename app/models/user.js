@@ -18,9 +18,6 @@ class User{
         user.password = bcrypt.hashSync(obj.password, 8);
         user.name = obj.name;
         user.zip = obj.zip;
-        user.bodyType = obj.bodyType;
-        user.sex = obj.sex;
-        user.lookingFor = obj.lookingFor.split(',').map(s=>s.trim());
         user.save(()=>fn(user));
       }else{
         fn(null);
@@ -30,12 +27,13 @@ class User{
 
   update(obj, fn){
     this.sex = obj.sex;
-    this.lookingFor = obj.lookingFor;
+    this.lookingFor = obj.lookingFor.split(',').map(s=>s.trim());;
     this.race = obj.race;
     this.religion = obj.religion;
     this.bodyType = obj.bodyType;
     this.height = obj.height;
     this.about = obj.about;
+    user.age = obj.age*1;
     this.save(()=>fn(this));
   }
 
