@@ -3,6 +3,10 @@
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
 
+exports.profile = (req, res)=> {
+  res.render('users/profile');
+};
+
 exports.update = (req, res)=> {
   User.findById(req.session.userId, u=>{
     u.update(req.body, ()=>{

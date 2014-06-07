@@ -2,4 +2,4 @@ extends ../shared/template
 
 block content
   h1 Dashboard
-  h2= user.name
+  a(href='/profile/#{user._id}') #{user.name}'s Profile Page
