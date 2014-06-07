@@ -5,6 +5,11 @@ var User = traceur.require(__dirname + '/../models/user.js');
 var Activity = traceur.require(__dirname + '/../models/activity.js');
 var Message = traceur.require(__dirname + '/../models/message.js');
 
+exports.logout = (req, res)=> {
+  req.session.userId = null;
+  res.redirect('/');
+};
+
 exports.profile = (req, res)=> {
   User.findById(req.session.userId.toString(), user=>{
     res.render('users/profile', {user: user, title: `${user.name}`});
