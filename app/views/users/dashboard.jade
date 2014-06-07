@@ -1,5 +1,67 @@
 extends ../shared/template
 
 block content
-  h1 Dashboard
-  h2= user.name
+  nav
+    h1.dashboard Dashboard
+    h2.username Welcome, #{user.name}
+
+  .container
+
+  //-   #search.grid-8
+  //-
+  //-   #profile.grid-3
+
+  .row
+    #search.col-md-8
+      h3 Search
+      input.searchzip.form-control(type='text', placeholder='Zip Code', name='zip')
+      label Looking For:
+      select(name='lookingfor')
+        option(value='looking for') Select
+        option(value='male') Male
+        option(value='female') Female
+        option(value='both') Both
+      label Religion:
+      select(name='religion')
+        option(value='religion') Select Religion
+        option(value='christian') Christian
+        option(value='muslim') Muslim
+        option(value='jewish') Jewish
+        option(value='hindu') Hindu
+        option(value='buddhist') Buddhist
+        option(value='athiest') Athiest
+        option(value='agnostic') Agnostic
+        option(value='other') Other
+        option(value='none') None
+      br
+      label Height:
+      select(name='height')
+        option(value='height') Select Height
+        option(value='under 4-11') Under 4'11"
+        option(value='4-11 to 5-4') 4'11" to 5'4"
+        option(value='5-5 to 5-11') 5'5" to 5'11"
+        option(value='6-0 to 6-5') 6'0" to 6'5"
+        option(value='over 6-5') Above 6'5"
+      label Body Type:
+      select(name='bodytype') Select Body Type
+        option(value='body type') Select Body Type
+        option(value='slender') Slender
+        option(value='petite') Petite
+        option(value='fit') Fit
+        option(value='athletic') Athletic
+        option(value='ripped') Ripped
+        option(value='more to love') More to Love
+        option(value='hour glass') Hour Glass with Extra Minutes
+        option(value='stocky') Stocky
+
+      br
+      button.searchbutton.btn.btn-default Search
+
+    #profile.col-md-4
+      
+
+  .row
+    #activities.col-md-8
+      h3 Activities
+    #messages.col-md-4
+      h3 Messages
