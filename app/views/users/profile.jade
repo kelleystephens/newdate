@@ -9,8 +9,9 @@ block content
         .section.col-md-8
           #about= user.about
           #line
-          each activity in activities
-            .activity= activity.name
+          if(activities)
+            each activity in activities
+              .activity= activity.name
         .side.col-md-4
           #sex= user.sex
           #lookingFor= user.lookingFor

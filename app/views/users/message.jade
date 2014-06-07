@@ -1,0 +1,13 @@
+extends ../shared/template
+
+block content
+
+  h1 Message
+
+  #toUser To= toUser.name
+  #fromUser From= fromUser.name
+
+  input#subject(type='text', placeholder='subject', name='subject')
+  textarea#messagebody
+
+  button#sendmessage Send Message
