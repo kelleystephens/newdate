@@ -12,7 +12,6 @@ var request = require('supertest');
 var traceur = require('traceur');
 var factory = traceur.require(__dirname + '/../../helpers/factory.js');
 var cp = require('child_process');
-// var fs = require('fs');
 
 var User;
 
@@ -31,14 +30,14 @@ describe('User', function(){
       cp.execFile(__dirname + '/../../pictures/before.sh', {cwd:__dirname + '/../../pictures'}, function(err, stdout, stderr){
         factory('user', function(users){
           var bill = {
-            'sex': 'male',
-            'lookingFor': 'male, female',
-            'race': 'american indian',
-            'religion': 'buddhist',
-            'age': '23',
-            'bodyType': 'athletic',
-            'height': '74',
-            'about': 'looking for hotties',
+            'sex': ['male'],
+            'lookingFor': ['male, female'],
+            'race': ['american indian'],
+            'religion': ['buddhist'],
+            'age': ['23'],
+            'bodyType': ['athletic'],
+            'height': ['74'],
+            'about': ['looking for hotties'],
             'photo': [{
               'originalFilename': 'profilePic1.jpg',
               'path': '../../test/pictures/copy/profilePic1.jpg',
@@ -47,14 +46,14 @@ describe('User', function(){
           };
 
           var mark = {
-            'sex': 'male',
-            'lookingFor': 'male',
-            'race': 'black',
-            'religion': 'muslim',
-            'age': '24',
-            'bodyType': 'ripped',
-            'height': '70',
-            'about': 'Im so lonely',
+            'sex': ['male'],
+            'lookingFor': ['male'],
+            'race': ['black'],
+            'religion': ['muslim'],
+            'age': ['24'],
+            'bodyType': ['ripped'],
+            'height': ['70'],
+            'about': ['Im so lonely'],
             'photo': [{
               'originalFilename': 'profilePic2.jpg',
               'path': '../../test/pictures/copy/profilePic2.jpg',
@@ -63,14 +62,14 @@ describe('User', function(){
           };
 
           var sue = {
-            'sex': 'female',
-            'lookingFor': 'male',
-            'race': 'black',
-            'religion': 'muslim',
-            'age': '24',
-            'bodyType': 'ripped',
-            'height': '70',
-            'about': 'lyke hiiiiiii!!!!!!!1!',
+            'sex': ['female'],
+            'lookingFor': ['male'],
+            'race': ['black'],
+            'religion': ['muslim'],
+            'age': ['24'],
+            'bodyType': ['ripped'],
+            'height': ['70'],
+            'about': ['lyke hiiiiiii!!!!!!!1!'],
             'photo': [{
               'originalFilename': 'profilePic3.jpg',
               'path': '../../test/pictures/copy/profilePic3.jpg',
@@ -79,14 +78,14 @@ describe('User', function(){
           };
 
           var alex = {
-            'sex': 'female',
-            'lookingFor': 'female',
-            'race': 'white',
-            'religion': 'christian',
-            'age': '24',
-            'bodyType': 'slender',
-            'height': '55',
-            'about': 'I want someone to build canoes with',
+            'sex': ['female'],
+            'lookingFor': ['female'],
+            'race': ['white'],
+            'religion': ['christian'],
+            'age': ['24'],
+            'bodyType': ['slender'],
+            'height': ['55'],
+            'about': ['I want someone to build canoes with'],
             'photo': [{
               'originalFilename': 'profilePic4.jpg',
               'path': '../../test/pictures/copy/profilePic4.jpg',
@@ -220,13 +219,13 @@ describe('User', function(){
       User.findById('0123456789abcdef01234567', function (user) {
 
         var obj = {
-          sex: 'female',
-          race: 'black',
-          religion: 'Jewish',
-          bodyType: 'hourglass with extra minutes',
-          height: '5-6',
-          about: 'I am a successful, independent black woman looking for love.',
-          lookingFor: 'male, female',
+          sex: ['female'],
+          race: ['black'],
+          religion: ['Jewish'],
+          bodyType: ['hourglass with extra minutes'],
+          height: ['5-6'],
+          about: ['I am a successful, independent black woman looking for love.'],
+          lookingFor: ['male, female'],
           photo: [{
             originalFilename: 'profilePic5.jpg',
             path: '../../test/pictures/copy/profilePic5.jpg',
@@ -256,13 +255,13 @@ describe('User', function(){
       User.findById('0123456789abcdef01234567', function (user) {
 
         var obj = {
-          sex: 'female',
-          race: 'black',
-          religion: 'Jewish',
-          bodyType: 'hourglass with extra minutes',
-          height: '5-6',
-          about: 'I am a successful, independent black woman looking for love.',
-          lookingFor: 'male, female',
+          sex: ['female'],
+          race: ['black'],
+          religion: ['Jewish'],
+          bodyType: ['hourglass with extra minutes'],
+          height: ['5-6'],
+          about: ['I am a successful, independent black woman looking for love.'],
+          lookingFor: ['male, female'],
           photo: [{
             originalFilename: 'profilePic6.jpg',
             path: '../../test/pictures/copy/profilePic6.jpg',
