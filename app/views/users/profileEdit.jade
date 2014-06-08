@@ -10,18 +10,18 @@ block content
           fieldset.step
             legend.basics Basics
             p
-              label Sex
+              label.setup Sex
               select#sex(name='sex')
                 option(value='male') Male
                 option(value='female') Female
             p
-              label Looking For
+              label.setup Looking For
               select#lookingFor(name='lookingFor')
                 option(value='male') Male
                 option(value='female') Female
                 option(value='male, female') Both
             p
-              label Race
+              label.setup Race
               select#race(name='race')
                 option(value='white') White
                 option(value='black') Black
@@ -32,7 +32,7 @@ block content
                 option(value='mixed') Mixed
                 option(value='other') Other
             p
-              label Religion
+              label.setup Religion
               select#religion(name='religion')
                 option(value='christian') Christian
                 option(value='jewish') Jewish
@@ -46,10 +46,10 @@ block content
           fieldset.step
             legend.physical Physical
             p
-              label Age
+              label.setup Age
               input#age(name='age' type='number' min='18' placeholder='31')
             p
-              label Body Type
+              label.setup Body Type
               select#bodyType(name='bodyType')
                 option(value='slender') Slender
                 option(value='petite') Petite
@@ -60,7 +60,7 @@ block content
                 option(value='more to love') More To Love
                 option(value='stocky') Stocky
             p
-              label Height
+              label.setup Height
               select#height(name='height')
                 option(value='under 4-11') Under 4'11"
                 option(value='4-11') 4'11"
@@ -84,19 +84,19 @@ block content
                 option(value='6-5') 6'5"
                 option(value='6-5') Above 6'5"
             p
-              label Upload a Profile Picture
+              label.setup Upload a Profile Picture
           fieldset.step
             legend.about About
             p
-              label Tell Us More About Yourself!
+              label.setup Tell Us More About Yourself!
               textarea#about(name='about' rows='10' columns='50' placeholder='Hobbies, Favorites, Likes, Dislikes')
           fieldset.step
             legend.account Account - Confirm your information:
             p
-              label Name
+              label.setup Name
               input#name(name='name' value='#{user.name}')
             p
-              label Email
+              label.setup Email
               input#email(name='email' value='#{user.email}')
             p.submit
               button#registerButton Check Out My Profile!
