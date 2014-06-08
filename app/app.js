@@ -17,6 +17,7 @@ var initRoutes     = traceur.require(__dirname + '/lib/init-routes.js');
 var app = express();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+app.locals.moment = require('moment');
 
 /* --- pipeline         */
 app.use(initMongo);
