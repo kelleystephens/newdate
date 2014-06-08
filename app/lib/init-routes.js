@@ -17,6 +17,7 @@ function load(app, fn){
   var home = traceur.require(__dirname + '/../routes/home.js');
   var users = traceur.require(__dirname + '/../routes/users.js');
   var messages = traceur.require(__dirname + '/../routes/messages.js');
+  var activities = traceur.require(__dirname + '/../routes/activities.js');
 
   app.all('*', users.lookup);
 
@@ -31,6 +32,7 @@ function load(app, fn){
   app.get('/profile/:id', dbg, users.profile);
   app.get('/message/:toId', dbg, messages.write);
   app.post('/message/:toId', dbg, messages.create);
+  app.get('/activity/:id', dbg, activities.show);
   app.get('/all', dbg, users.all);
 
   console.log('Routes Loaded');
