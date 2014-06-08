@@ -61,6 +61,8 @@ class User{
     var maxDistance = query.maxDistance ? ((query.maxDistance * 1) * oneMile) : 50000;
 
     var filter = {
+      lookingFor: user.sex,
+      _id: { $ne: user._id },
       coordinates: {$nearSphere:[lat, lng],$maxDistance:maxDistance}
     };
 
@@ -103,14 +105,7 @@ class User{
       }
     }
 
-
-
-    console.log('THIS IS THE FILTER!!!!!!!');
-    console.log(filter);
-
     userCollection.find(filter).toArray((err, users)=>{
-      console.log('THESE ARE THE USERS!!!!!!!');
-      console.log(users);
       fn(users);
     });
   }

@@ -226,10 +226,10 @@ describe('User', function(){
           bodyType: 'hourglass with extra minutes',
           height: '5-6',
           about: 'I am a successful, independent black woman looking for love.',
-          lookingFor: 'Male, Female',
+          lookingFor: 'male, female',
           photo: [{
-            originalFilename: 'profilePic6.jpg',
-            path: '../../test/pictures/copy/profilePic6.jpg',
+            originalFilename: 'profilePic5.jpg',
+            path: '../../test/pictures/copy/profilePic5.jpg',
             size: 10
           }]
         };
@@ -264,8 +264,8 @@ describe('User', function(){
           about: 'I am a successful, independent black woman looking for love.',
           lookingFor: 'male, female',
           photo: [{
-            originalFilename: 'profilePic5.jpg',
-            path: '../../test/pictures/copy/profilePic5.jpg',
+            originalFilename: 'profilePic6.jpg',
+            path: '../../test/pictures/copy/profilePic6.jpg',
             size: 10
           }]
         };
@@ -316,13 +316,150 @@ describe('User', function(){
         };
 
         User.search(query, user, function (users) {
-          console.log('THESE ARE THE USER RESULTS!!!!!!!!!!');
-          console.log(users);
           expect(users).to.be.ok;
           expect(users).to.be.an('array');
-          expect(users[0].name).to.equal('mark');
+          expect(users.length).to.equal(2);
           done();
         });
+      });
+    });
+
+    it('should find a user by the query parameters - any race', function (done) {
+      User.findById('0123456789abcdef01234567', function (user) {
+        var query = {
+          maxDistance: '30',
+          race: 'any',
+          religion: 'muslim',
+          bodyType: 'ripped',
+          ageRange: '5',
+          heightRange: '65-71'
+        };
+
+        User.search(query, user, function (users) {
+          expect(users).to.be.ok;
+          expect(users).to.be.an('array');
+          expect(users.length).to.equal(2);
+          done();
+        });
+      });
+    });
+
+    it('should find a user by the query parameters - any religion', function (done) {
+      User.findById('0123456789abcdef01234567', function (user) {
+        var query = {
+          maxDistance: '30',
+          race: 'black',
+          religion: 'any',
+          bodyType: 'ripped',
+          ageRange: '5',
+          heightRange: '65-71'
+        };
+
+        User.search(query, user, function (users) {
+          expect(users).to.be.ok;
+          expect(users).to.be.an('array');
+          expect(users.length).to.equal(2);
+          done();
+        });
+      });
+    });
+
+    it('should find a user by the query parameters - any bodyType', function (done) {
+      User.findById('0123456789abcdef01234567', function (user) {
+        var query = {
+          maxDistance: '30',
+          race: 'black',
+          religion: 'muslim',
+          bodyType: 'any',
+          ageRange: '5',
+          heightRange: '65-71'
+        };
+
+        User.search(query, user, function (users) {
+          expect(users).to.be.ok;
+          expect(users).to.be.an('array');
+          expect(users.length).to.equal(2);
+          done();
+        });
+      });
+    });
+
+    it('should find a user by the query parameters - any age', function (done) {
+      User.findById('0123456789abcdef01234567', function (user) {
+        var query = {
+          maxDistance: '30',
+          race: 'black',
+          religion: 'muslim',
+          bodyType: 'ripped',
+          ageRange: 'any',
+          heightRange: '65-71'
+        };
+
+        User.search(query, user, function (users) {
+          expect(users).to.be.ok;
+          expect(users).to.be.an('array');
+          expect(users.length).to.equal(2);
+          done();
+        });
+      });
+    });
+  });
+
+  it('should find a user by the query parameters - any height', function (done) {
+    User.findById('0123456789abcdef01234567', function (user) {
+      var query = {
+        maxDistance: '30',
+        race: 'black',
+        religion: 'muslim',
+        bodyType: 'ripped',
+        ageRange: '5',
+        heightRange: 'any'
+      };
+
+      User.search(query, user, function (users) {
+        expect(users).to.be.ok;
+        expect(users).to.be.an('array');
+        expect(users.length).to.equal(2);
+        done();
+      });
+    });
+  });
+
+  it('should find a user by the query parameters - no maxDistance', function (done) {
+    User.findById('0123456789abcdef01234567', function (user) {
+      var query = {
+        // maxDistance: '30',
+        race: 'black',
+        religion: 'muslim',
+        bodyType: 'ripped',
+        ageRange: '5',
+        heightRange: '65-71'
+      };
+
+      User.search(query, user, function (users) {
+        expect(users).to.be.ok;
+        expect(users).to.be.an('array');
+        expect(users.length).to.equal(2);
+        done();
+      });
+    });
+  });
+
+  it('should find a user by the query parameters - any everything', function (done) {
+    User.findById('0123456789abcdef01234567', function (user) {
+      var query = {
+        race: 'any',
+        religion: 'any',
+        bodyType: 'any',
+        ageRange: 'any',
+        heightRange: 'any'
+      };
+
+      User.search(query, user, function (users) {
+        expect(users).to.be.ok;
+        expect(users).to.be.an('array');
+        expect(users.length).to.equal(2);
+        done();
       });
     });
   });

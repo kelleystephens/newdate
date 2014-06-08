@@ -12,12 +12,7 @@
     "religion": "buddhist",
     "age": "23",
     "bodyType": "athletic",
-    "height": "74",
-    "photo": [{
-      "originalFilename": "profilePic1.jpg",
-      "path": "../../test/pictures/copy/profilePic1.jpg",
-      "size": 10
-      }]
+    "height": "74"
   },
   {
     "name": "mark",
