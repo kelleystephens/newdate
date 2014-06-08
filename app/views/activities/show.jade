@@ -1,8 +1,14 @@
 extends ../shared/template
 
 block content
-  p #{activity.name}
-  p #{activity.date}
-  p #{activity.description}
-  p #{activity.address}
-  p #{activity.tags}
+
+  h1#activityname #{activity.name}
+  h4 #{activity.date}
+  p.activity Description:
+  h4 #{activity.description}
+  p.activity Address:
+  h4 #{activity.address}
+  p.activity Tags:
+  h4 #{activity.tags}
+
+  button.btn.btn-primary.rsvp RSVP to this Activity

@@ -2,11 +2,13 @@ extends ../shared/template
 
 block content
 
+  h1#profilesetup Profile Set Up
+
   #rapper
     #steps
         form#formElem(name='formElem', action='/profile/#{user.id}/setup', method='post')
           fieldset.step
-            legend Basics
+            legend.basics Basics
             p
               label Sex
               select#sex(name='sex')
@@ -42,7 +44,7 @@ block content
                 option(value='other') Other
                 option(value='none') None
           fieldset.step
-            legend Physical
+            legend.physical Physical
             p
               label Age
               input#age(name='age' type='number' min='18' placeholder='31')
@@ -84,12 +86,12 @@ block content
             p
               label Upload a Profile Picture
           fieldset.step
-            legend About
+            legend.about About
             p
               label Tell Us More About Yourself!
               textarea#about(name='about' rows='10' columns='50' placeholder='Hobbies, Favorites, Likes, Dislikes')
           fieldset.step
-            legend Account - Confirm your information:
+            legend.account Account - Confirm your information:
             p
               label Name
               input#name(name='name' value='#{user.name}')
@@ -99,7 +101,7 @@ block content
             p.submit
               button#registerButton Check Out My Profile!
       #navigation(style='display: none;')
-        ul
+        ul.navigation
           li.selected
             a(href='#') Basics
           li

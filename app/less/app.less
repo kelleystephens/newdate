@@ -1,8 +1,8 @@
 body {
-  margin: auto;
-  text-align: center;
-  // background-color: #725445;
+  margin: auto !important;
+  text-align: center !important;
   margin-top: 50px;
+  background-image: url('/img/halftone.png');
 }
 
 .row {
@@ -101,9 +101,14 @@ body {
   // margin-left: 100px;
 }
 
-fieldset.step{
-  background: red;
-  border-radius: 7px;
+// fieldset.step{
+//   background-color: #8DB3A9;
+//   //border-radius: 7px;
+// }
+
+#steps {
+  background-color: #8DB3A9;
+  //border-radius: 7px;
 }
 
 select {
@@ -155,7 +160,44 @@ label.labels {
 }
 
 #rapper {
-  box-shadow: none !important;
+  box-shadow: 4px 4px 7px #545454 !important;
+  // margin-left: 100px;
+  margin: auto;
+  border: none !important;
+  // position:relative;
+  // -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset !important;
+  // -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset !important;
+  // box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset !important;
+}
+
+// #rapper:before, #rapper:after {
+//   content:"" !important;
+//   position:absolute !important;
+//   z-index:-1 !important;
+//   -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8) !important;
+//   -moz-box-shadow:0 0 20px rgba(0,0,0,0.8) !important;
+//   box-shadow:0 0 20px rgba(0,0,0,0.8) !important;
+//   top:0 !important;
+//   bottom:0 !important;
+//   left:10px !important;
+//   right:10px !important;
+//   -moz-border-radius:100px / 10px !important;
+//   border-radius:100px / 10px !important;
+// }
+//
+// #rapper:after {
+//   right:10px !important;
+//   left:auto !important;
+//   -webkit-transform:skew(8deg) rotate(3deg) !important;
+//   -moz-transform:skew(8deg) rotate(3deg) !important;
+//   -ms-transform:skew(8deg) rotate(3deg) !important;
+//   -o-transform:skew(8deg) rotate(3deg) !important;
+//   transform:skew(8deg) rotate(3deg) !important;
+// }
+
+h1#profilesetup {
+  margin-top: 75px;
+  margin-bottom: 20px;
 }
 
 .activitiesrow {
@@ -432,6 +474,7 @@ background-image: linear-gradient(to bottom, #949E88 0%, #BCC4B5 100%);
 #toUser, #fromUser {
   margin-bottom: 10px;
   font-size: 17px;
+  color: #B56C63;
 }
 
 #subject.form-control, #messagebody {
@@ -472,19 +515,25 @@ a.navbar-text {
 
 .navbar-text:hover {
   color: #FFF6C4 !important;
-  background-color: #5E7788 !important;
+  background-color: #B56C63 !important;
 }
 
 #wrapper {
-  margin-top: 200px;
+  margin-top: 50px;
 }
 
-// #appname {
-//   background-image: url('/img/newDate.svg');
-//   width: 600px;
-//   height: 150px;
-//   //margin-bottom: 200px;
-// }
+#appname {
+  background-image: url('/img/newDate-outline.svg');
+  background-repeat: no-repeat;
+  background-cover: cover;
+  width: 600px;
+  height: 150px;
+  //margin-bottom: 200px;
+  //float: left;
+  margin: auto !important;
+  text-align: center !important;
+  //margin-right: 470px !important;
+}
 
 .button-holder {
 	background: #none;
@@ -577,4 +626,122 @@ a.navbar-text {
 
 #steps.step.cover{
   width: 500px !important;;
+}
+
+#wrapper h1 {
+  -webkit-text-fill-color: #5A6E79 !important;
+  //color: blue !important;
+}
+
+#wrapper p.button input {
+  background-color: #5A6E79;
+  border: none !important;
+}
+
+#wrapper p.button input:hover {
+  background-color: #A4ACAF;
+}
+
+#wrapper p.change_link a {
+  color: #6A9FAB;
+}
+
+#wrapper p.change_link a:hover {
+  color: #5A6E79;
+  border-color: #5A6E79;
+}
+
+#messageh1 {
+  margin-top: 100px;
+  color: #B56C63;
+}
+
+#sendmessage {
+  background-color: #8DB3A9;
+  border-color: #8DB3A9;
+}
+
+#sendmessage:hover {
+  background-color: #5A6E79;
+  border-color: #5A6E79;
+  color: #FFF6C4;
+}
+
+#steps form legend {
+  background-color: #8DB3A9;
+  border: none;
+}
+
+.basics, .physical, .about, .account {
+  color: #FFF6C4 !important;
+  text-shadow: none !important;
+  font-weight: normal !important;
+  margin-left: 90px !important;
+}
+
+#profilesetup {
+  color: #B56C63
+}
+
+#registerButton {
+  background-color: #5A6E79 !important;
+  font-weight: normal !important;
+}
+
+#registerButton:hover {
+  background-color: #B56C63 !important;
+  color: #FFF6C4 !important;
+  text-shadow: none !important;
+}
+
+ul.navigation {
+  margin-bottom: 0px !important;
+}
+
+#navigation {
+  background-color: #8DB3A9;
+  //margin: 10px;
+  //padding-left: -10px !important;
+  border: none !important;
+  height: 55px;
+}
+
+ul.navigation li {
+  width: 138px;
+  margin: 0px !important;
+}
+
+#navigation ul li a:hover {
+  background-color: #5A6E79;
+  color: white;
+  text-shadow: none !important;
+  border: none;
+}
+
+#navigation ul li.selected {
+  background-color: #B56C63 !important;
+}
+
+#activityname {
+  margin-top: 100px;
+  font-weight: bolder;
+  color: #8DB3A9;
+}
+
+p.activity {
+  font-size: 20px;
+  font-weight: bolder;
+  color: #B56C63;
+}
+
+h4 {
+  color: #5A6E79;
+}
+
+// .rsvp {
+//   background-color:
+// }
+
+#steps form p label {
+  text-align: left;
 }
