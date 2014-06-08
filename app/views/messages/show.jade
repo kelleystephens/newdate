@@ -1,0 +1,11 @@
+extends ../shared/template
+
+block content
+
+  h1 From #{user.name}
+  a(href='/profile/#{user._id}') Visit profile
+
+  h2 #{message.subject}
+  h4 #{message.body}
+
+  a(href='/message/#{message.fromUserId}') Reply

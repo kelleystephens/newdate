@@ -73,8 +73,8 @@ block content
       h3.actH3.inbox Inbox
       if(messages)
         each message in messages
-          .message(class= message.classes)
-            .messagesender #{message.fromUserIds}
-            .messagesubject #{message.subject}
+          .message(class='#{message.classes}')
+            .messagesubject
+              a(href='/message/read/#{message._id}') #{message.subject}
       else
         h2 You have no messages
