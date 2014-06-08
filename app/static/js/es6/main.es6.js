@@ -22,7 +22,7 @@
         var lat = results[0].geometry.location.lat();
         var lng = results[0].geometry.location.lng();
         ajax('/register', 'post', {zip:zip, name:name, email:email, password:password, coordinates:[lat, lng]}, obj=>{
-          window.location= '/profile/${obj._id}/setup';
+          window.location= `/profile/${obj._id}/setup`;
         });
       }
     });
