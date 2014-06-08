@@ -31,6 +31,7 @@ function load(app, fn){
   app.get('/profile/:id', dbg, users.profile);
   app.get('/message/:toId', dbg, messages.write);
   app.post('/message/:toId', dbg, messages.create);
+  app.get('/all', dbg, users.all);
 
   console.log('Routes Loaded');
   fn();

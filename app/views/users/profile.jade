@@ -13,17 +13,18 @@ block content
         #pic
         #name2= user.name
         a#msg(href='/message/#{user._id}') Message Me!
-      .container
-          .section.col-md-8
-            #about= user.about
-            #line
-            if(activities)
-              each activity in activities
-                .activity= activity.name
-          .side.col-md-4
-            #sex= user.sex
-            #lookingFor= user.lookingFor
-            #race= user.race
-            #religion= user.religion
-            #bodyType= user.bodyType
-            #height= user.height
+
+  .container
+      .section.col-md-8
+        #about= user.about
+        #line
+        if(activities)
+          each activity in activities
+            .activity= activity.name
+      .side.col-md-4
+        #sex= user.sex
+        #lookingFor= user.lookingFor
+        #race= user.race
+        #religion= user.religion
+        #bodyType= user.bodyType
+        #height= user.height

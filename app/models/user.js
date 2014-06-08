@@ -65,6 +65,10 @@ class User{
     Base.findByLocation(obj, userCollection, User, fn);
   }
 
+  static findAll(fn){
+    Base.findAll(userCollection, User, fn);
+  }
+
 }
 
 module.exports = User;

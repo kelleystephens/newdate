@@ -1,0 +1,8 @@
+extends ../shared/template
+
+block content
+
+  if(users)
+    each user in users
+      div
+        a.eachUser(href='/profile/#{user._id}')= user.name
