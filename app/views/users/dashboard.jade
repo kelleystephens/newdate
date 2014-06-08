@@ -52,6 +52,7 @@ block content
               option(value='more to love') More To Love
               option(value='stocky') Stocky
               option(value='any') No Preference
+        button.dashboardsearch.btn.btn-primary Search
     #steps.step.cover.right
       #profilepic(style='background-image: url(#{user.photo})')
       .btns
@@ -68,11 +69,12 @@ block content
             .activitydate #{activity.date}
             .activitydescription #{activity.description}
     #steps.step.cover.clear.right
-      h3.actH3 Inbox
+
+      h3.actH3.inbox Inbox
       if(messages)
         each message in messages
           .message(class= message.classes)
             .messagesender #{message.fromUserIds}
             .messagesubject #{message.subject}
       else
-        .nomsg You Have No Messages
+        h2 You have no messages
