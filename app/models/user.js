@@ -22,19 +22,8 @@ class User{
         user.name = obj.name;
         user.zip = obj.zip;
         user.coordinates = obj.coordinates.map(n=>n*1);
-        user.photo = '/img/pictures/' + obj.photo[0].originalFilename;
-
-
-        var path = obj.photo[0].path;
-
-        if(path[0] !== '/'){
-           path = __dirname + '/' + path;
-        }
-
-        fs.renameSync(path, __dirname + '/../static/img/pictures/' + obj.photo[0].originalFilename);
-
-
-        // user.processPhotos(obj.photo);
+        user.photos = [];
+        user.processPhotos(obj.photo);
         user.save(()=>fn(user));
       }else{
         fn(null);
@@ -65,41 +54,26 @@ class User{
     Base.findByLocation(obj, userCollection, User, fn);
   }
 
-  // processPhotos(photos){
-  //   photos.forEach(p=>{
-  //     if(p.size){
-  //       var name = crypto.randomBytes(12).toString('hex') + path.extname(p.originalFilename).toLowerCase();
-  //       var file = `/img/${this._id.toString()}/${name}`;
-  //
-  //       var photo = {};
-  //       photo.name = name;
-  //       photo.file = file;
-  //       photo.size = p.size;
-  //       photo.orig = p.originalFilename;
-  //       // photo.isPrimary = false;
-  //
-  //       var filePath = p.path;
-  //
-  //       if(filePath[0] !== '/'){
-  //         filePath = __dirname + '/' + filePath;
-  //       }
-  //
-  //       console.log(filePath);
-  //
-  //
-  //
-  //       var userPath = `${__dirname}/../static/img/${this._id.toString()}`;
-  //       var fullPath = `${userPath}/${name}`;
-  //
-  //       if(!fs.existsSync(userPath)){fs.mkdirSync(userPath);}
-  //
-  //       fs.renameSync(filePath, fullPath);
-  //
-  //       // this.userDir = path.normalize(userPath);
-  //       this.photos.push(photo);
-  //     }
-  //   });
-  // }
+  processPhotos(photos){
+    photos.forEach(p=>{
+      if(p.size){
+        var path = p.path;
+
+        if(path[0] !== '/'){
+           path = __dirname + '/' + path;
+        }
+
+        var userDir = `${__dirname}/../static/img/${this._id.toString()}`;
+        var fileDir =  `${userDir}/${p.originalFilename}`;
+
+        if(!fs.existsSync(userDir)){fs.mkdirSync(userDir);}
+
+        fs.renameSync(path, fileDir);
+
+        this.photos.push(fileDir);
+      }
+    });
+  }
 
   update(obj, fn){
     this.sex = obj.sex;

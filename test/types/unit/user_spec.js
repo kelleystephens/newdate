@@ -43,6 +43,7 @@ describe('User', function(){
   });
 
   describe('.create', function(){
+
     it('should successfully create a user', function(done){
       var fields = {
         email:'billy@aol.com',
@@ -61,7 +62,7 @@ describe('User', function(){
 
       User.create(fields, function(u){
 
-        var imgExists = fs.existsSync(__dirname + '/../../../app/static/img/pictures/profilePic6.jpg');
+        var imgExists = fs.existsSync(__dirname + '/../../../app/static/img/'+ u._id.toString() +'/profilePic6.jpg');
         expect(imgExists).to.be.true;
 
         expect(u).to.be.ok;
@@ -75,7 +76,7 @@ describe('User', function(){
     });
 
     it('should NOT successfully register a user - user already exists', function(done){
-      User.create({email:'sue@aol.com', password:'does not matter', name: 'sue', zip: '37203'}, function(u){
+      User.create({email:'bill@aol.com', password:'does not matter', name: 'sue', zip: '37203'}, function(u){
         expect(u).to.be.null;
         done();
       });
@@ -91,7 +92,7 @@ describe('User', function(){
 
   describe('.login', function(){
     it('should successfully login a user', function(done){
-      User.login({email:'sue@aol.com', password:'5678'}, function(u){
+      User.login({email:'bill@aol.com', password:'1234'}, function(u){
         expect(u).to.be.ok;
         done();
       });
@@ -105,7 +106,7 @@ describe('User', function(){
     });
 
     it('should NOT login user - bad password', function(done){
-      User.login({email:'sue@aol.com', password:'wrong'}, function(u){
+      User.login({email:'bill@aol.com', password:'wrong'}, function(u){
         expect(u).to.be.null;
         done();
       });
@@ -114,10 +115,10 @@ describe('User', function(){
 
   describe('.findById', function () {
     it('should return a user with matching credentials', function (done) {
-      User.findById('0123456789abcdef01234568', function (user) {
+      User.findById('0123456789abcdef01234567', function (user) {
         expect(user).to.be.ok;
         expect(user).to.be.instanceof(User);
-        expect(user.email).to.equal('sue@aol.com');
+        expect(user.email).to.equal('bill@aol.com');
         done();
       });
     });
@@ -132,12 +133,12 @@ describe('User', function(){
 
   describe('#save', function () {
     it('should save a user', function (done) {
-      User.findById('0123456789abcdef01234568', function (user) {
+      User.findById('0123456789abcdef01234567', function (user) {
         user.name = 'susan';
         user.save(function (user) {
           expect(user).to.be.ok;
           expect(user).to.be.instanceof(User);
-          expect(user.email).to.equal('sue@aol.com');
+          expect(user.email).to.equal('bill@aol.com');
           expect(user.name).to.equal('susan');
           expect(user.zip).to.equal('37203');
           done();
@@ -148,7 +149,7 @@ describe('User', function(){
 
   describe('#update', function () {
     it('should update a user', function (done) {
-      User.findById('0123456789abcdef01234568', function (user) {
+      User.findById('0123456789abcdef01234567', function (user) {
 
         var obj = {
           sex: 'female',
@@ -164,8 +165,8 @@ describe('User', function(){
           expect(user).to.be.ok;
           expect(user).to.be.instanceof(User);
           expect(user._id).to.be.instanceof(Mongo.ObjectID);
-          expect(user._id.toString()).to.deep.equal('0123456789abcdef01234568');
-          expect(user.email).to.equal('sue@aol.com');
+          expect(user._id.toString()).to.deep.equal('0123456789abcdef01234567');
+          expect(user.email).to.equal('bill@aol.com');
           expect(user.zip).to.equal('37203');
           expect(user.sex).to.equal('female');
           expect(user.race).to.equal('black');
