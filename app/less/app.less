@@ -1,12 +1,12 @@
 body {
-  margin: auto;
-  text-align: center;
-  margin-top: 50px;
+  margin: auto !important;
+  text-align: center !important;
+  margin-top: 50px !important;
+  background-image: url('/img/halftone.png');
 }
 
 fieldset.step{
-  background: red;
-  border-radius: 7px;
+  background: #8db3a9;
 }
 
 select {
@@ -14,6 +14,33 @@ select {
   margin-bottom: 10px;
   height: 35px;
 }
+
+/* Login/Register Styling */
+
+#wrapper h1 {
+  -webkit-text-fill-color: #5A6E79 !important;
+  //color: blue !important;
+}
+
+#wrapper p.button input {
+  background-color: #5A6E79;
+  border: none !important;
+}
+
+#wrapper p.button input:hover {
+  background-color: #A4ACAF;
+}
+
+#wrapper p.change_link a {
+  color: #6A9FAB;
+}
+
+#wrapper p.change_link a:hover {
+  color: #5A6E79;
+  border-color: #5A6E79;
+}
+
+/* Profile Setup Styling */
 
 #rapper.step {
   margin-top: 21px;
@@ -27,7 +54,78 @@ select {
 }
 
 #rapper {
-  box-shadow: none !important;
+  box-shadow: 4px 4px 7px #545454 !important;
+  // margin-left: 100px;
+  margin: auto;
+  border: none !important;
+}
+
+h1#profilesetup {
+  margin-top: 75px;
+  margin-bottom: 20px;
+}
+
+#steps form legend {
+  background-color: #8DB3A9;
+  border: none;
+}
+
+#steps{
+  background-color: #8DB3A9;
+}
+
+.basics, .physical, .about, .account {
+  color: #FFF6C4 !important;
+  text-shadow: none !important;
+  font-weight: normal !important;
+  margin-left: 90px !important;
+}
+
+#profilesetup {
+  color: #B56C63
+}
+
+#registerButton {
+  background-color: #5A6E79 !important;
+  font-weight: normal !important;
+}
+
+#registerButton:hover {
+  background-color: #B56C63 !important;
+  color: #FFF6C4 !important;
+  text-shadow: none !important;
+}
+
+ul.navigation {
+  margin-bottom: 0px !important;
+}
+
+#navigation {
+  background-color: #8DB3A9;
+  //margin: 10px;
+  //padding-left: -10px !important;
+  border: none !important;
+  height: 55px;
+}
+
+ul.navigation li {
+  width: 138px;
+  margin: 0px !important;
+}
+
+#navigation ul li a:hover {
+  background-color: #5A6E79;
+  color: white;
+  text-shadow: none !important;
+  border: none;
+}
+
+#navigation ul li.selected {
+  background-color: #B56C63 !important;
+}
+
+.setup {
+  text-align: left !important;
 }
 
 /* PROFILE VIEW STYLING */
@@ -276,6 +374,7 @@ background-image: linear-gradient(to bottom, #949E88 0%, #BCC4B5 100%);
 #toUser, #fromUser {
   margin-bottom: 10px;
   font-size: 17px;
+  color: #B56C63;
 }
 
 #subject.form-control, #messagebody {
@@ -318,19 +417,25 @@ a.navbar-text {
 
 .navbar-text:hover {
   color: #FFF6C4 !important;
-  background-color: #5E7788 !important;
+  background-color: #B56C63 !important;
 }
 
 #wrapper {
-  margin-top: 200px;
+  margin-top: 50px;
 }
 
-// #appname {
-//   background-image: url('/img/newDate.svg');
-//   width: 600px;
-//   height: 150px;
-//   //margin-bottom: 200px;
-// }
+#appname {
+  background-image: url('/img/newDate-outline.svg');
+  background-repeat: no-repeat;
+  background-cover: cover;
+  width: 600px;
+  height: 150px;
+  //margin-bottom: 200px;
+  //float: left;
+  margin: auto !important;
+  text-align: center !important;
+  //margin-right: 470px !important;
+}
 
 /* Message Me Buttons */
 .button-holder {
@@ -417,6 +522,7 @@ a.navbar-text {
 }
 
 /* Dashboard Page Design */
+
 /* Search Section */
 
 .searchlegend {
@@ -666,4 +772,43 @@ select.selects {
 //   //float: right;
 //   margin-right: 230px;
 //   margin-top: -455px;
+// }
+
+/* Writing a Message Styling */
+
+#messageh1 {
+  margin-top: 100px;
+  color: #B56C63;
+}
+
+#sendmessage {
+  background-color: #8DB3A9;
+  border-color: #8DB3A9;
+}
+
+#sendmessage:hover {
+  background-color: #5A6E79;
+  border-color: #5A6E79;
+  color: #FFF6C4;
+}
+
+/* Activity Show Page Styling */
+#activityname {
+  margin-top: 100px;
+  font-weight: bolder;
+  color: #8DB3A9;
+}
+
+p.activity {
+  font-size: 20px;
+  font-weight: bolder;
+  color: #B56C63;
+}
+
+h4 {
+  color: #5A6E79;
+}
+
+// .rsvp {
+//   background-color:
 // }
