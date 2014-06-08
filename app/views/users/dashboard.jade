@@ -3,18 +3,30 @@ extends ../shared/template
 block content
   .container-fluid
     #steps.step.cover
-      form#formElem(name='formElem', action='', method='post')
+      form#formElem(name='formElem', action='/search', method='get')
         fieldset.step.holder
           legend.searchlegend.s Search
           p.allp
             label.labels Age
-            select.selects#age(name='age')
+            select.selects#age(name='ageRange')
               option(value='any') Select Age Range
               option(value='5') Within 5 years
               option(value='10') Within 10 years
               option(value='15') Within 15 years
               option(value='20') Within 20 years
               option(value='any') No Preference
+          p.allp
+            label.labels Race
+            select.selects#race(name='race')
+              option(value='any') Select Race
+              option(value='white') White
+              option(value='black') Black
+              option(value='asian') Asian
+              option(value='american indian') American Indian
+              option(value='pacific islander') Pacific Islander
+              option(value='hispanic') Hispanic
+              option(value='mixed') Mixed
+              option(value='other') Other
           p.allp
             label.labels Religion
             select.selects#religion(name='religion')
@@ -31,7 +43,7 @@ block content
               option(value='any') No Preference
           p.allp
             label.labels Height
-            select.selects#height(name='height')
+            select.selects#height(name='heightRange')
               option(value='any') Select Height
               option(value='u59') Under 4'11"
               option(value='59-64') 4'11" to 5'4"
@@ -41,7 +53,7 @@ block content
               option(value='any') No Preference
           p.allp
             label.labels Body Type
-            select.selects#bodytype(name='bodytype')
+            select.selects#bodytype(name='bodyType')
               option(value='any') Select Body Type
               option(value='slender') Slender
               option(value='petite') Petite
@@ -52,7 +64,7 @@ block content
               option(value='more to love') More To Love
               option(value='stocky') Stocky
               option(value='any') No Preference
-        button.dashboardsearch.btn.btn-primary Search
+        button.btn.search Go
     #steps.step.cover.right
       #profilepic(style='background-image: url(#{user.photo})')
       .btns

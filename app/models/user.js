@@ -70,23 +70,41 @@ class User{
       coordinates: {$nearSphere:[lat, lng],$maxDistance:maxDistance}
     };
 
+    console.log('Initial filter object: ');
+    console.log(filter);
+
     if(user.lookingFor.length === 2){
       filter.$or = [{sex: user.lookingFor[0]}, {sex: user.lookingFor[1]}];
     }else{
       filter.sex = user.lookingFor[0];
     }
 
+    console.log('Looking for: ');
+    console.log(filter);
+
     if(query.race !== 'any'){
       filter.race = query.race;
     }
+
+    console.log('Looking for - race: ');
+    console.log(filter);
 
     if(query.religion !== 'any'){
       filter.religion = query.religion;
     }
 
+    console.log('Looking for - religion: ');
+    console.log(filter);
+
+    console.log('Body type?');
+    console.log(query.bodyType);
+
     if(query.bodyType !== 'any'){
       filter.bodyType = query.bodyType;
     }
+
+    console.log('Looking for - body type: ');
+    console.log(filter);
 
     if(query.ageRange !== 'any'){
       var maxAge = user.age + query.ageRange * 1;
@@ -94,7 +112,13 @@ class User{
       filter.age = { $gte: minAge, $lte: maxAge };
     }
 
+    console.log('Looking for - age range: ');
+    console.log(filter);
+
     var height;
+
+    console.log('Height - before set: ');
+    console.log(height);
 
     if(query.heightRange !== 'any'){
       if(query.heightRange === 'u59'){
@@ -109,7 +133,12 @@ class User{
       }
     }
 
+    console.log('Filter - after height range: ');
+    console.log(filter);
+
     userCollection.find(filter).toArray((err, users)=>{
+      console.log('Users returned: ');
+      console.log(users);
       fn(users);
     });
   }
