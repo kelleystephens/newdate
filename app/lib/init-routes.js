@@ -36,6 +36,7 @@ function load(app, fn){
   app.get('/activity/:id', dbg, activities.show);
   app.post('/activity/rsvp/:aid', dbg, activities.rsvp);
   app.get('/all', dbg, users.all);
+  app.get('/search', dbg, users.search);
 
   console.log('Routes Loaded');
   fn();
