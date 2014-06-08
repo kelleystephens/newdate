@@ -53,7 +53,7 @@ block content
               option(value='stocky') Stocky
               option(value='any') No Preference
     #steps.step.cover.right
-      #profilepic(style='background-image: url(#{user.photo})')
+      #profilepic(style='background-image: url("#{user.photo}")')
       .btns
         a.a_demo_four.view(href='/profile/#{user._id}') View Profile
       .btns

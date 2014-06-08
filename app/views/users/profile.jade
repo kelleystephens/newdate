@@ -3,55 +3,51 @@ extends ../shared/template
 block content
   if(user.sex === 'male')
     body#background
-    #contain
-      #pic
-      #name1= user.name
-      div.button-holder
-        div.center-content
-          a.type-3(href='/message/#{user._id}')
-            span Message
-            span Message
-            span Message
-    .container
-        .section1.col-md-8
-          #about= user.about
-          #line
-          if(activities)
-              each activity in activities
-                .activity= activity.name
-        .col-md-1
-        .side1.col-md-3
-          #sex Sex: #{user.sex}
-          #lookingFor Looking for: #{user.lookingFor}
-          #race Race: #{user.race}
-          #religion Religion: #{user.religion}
-          #age Age: #{user.age}
-          #bodyType Body Type: #{user.bodyType}
-          #height Height: #{user.height}
+      #contain
+        .container
+          .section1.left.col-md-4
+            .holder
+              #about= user.about
+          .section1.middle.col-md-4
+            #pic(style='background-image: url("#{user.photo}")')
+            #name1= user.name
+            div.button-holder
+              div.center-content
+                a.type-3(href='/message/#{user._id}')
+                  span Message
+                  span Message
+                  span Message
+          .section1.right.col-md-4
+            .holder
+              #sex Sex: #{user.sex}
+              #lookingFor Looking for: #{user.lookingFor}
+              #race Race: #{user.race}
+              #religion Religion: #{user.religion}
+              #age Age: #{user.age}
+              #bodyType Body Type: #{user.bodyType}
+              #height Height: #{user.height}
   else
     body#background2
       #contain2
-        #pic
-        #name2= user.name
-        div.button-holder
-          div.center-content
-            a.type-3(href='/message/#{user._id}')
-              span Message
-              span Message
-              span Message
-      .container
-          .section2.col-md-8
-            #about= user.about
-            #line2
-            if(activities)
-              each activity in activities
-                .activity= activity.name
-          .col-md-1
-          .side2.col-md-3
-            #sex Sex: #{user.sex}
-            #lookingFor Looking for: #{user.lookingFor}
-            #race Race: #{user.race}
-            #religion Religion: #{user.religion}
-            #age Age: #{user.age}
-            #bodyType Body Type: #{user.bodyType}
-            #height Height: #{user.height}
+        .container
+          .section2.left.col-md-4
+            .holder
+              #about= user.about
+          .section2.middle.col-md-4
+            #pic(style='background-image: url("#{user.photo}")')
+            #name1= user.name
+            div.button-holder
+              div.center-content
+                a.type-3(href='/message/#{user._id}')
+                  span Message
+                  span Message
+                  span Message
+          .section2.right.col-md-4
+            .holder
+              #sex Sex: #{user.sex}
+              #lookingFor Looking for: #{user.lookingFor}
+              #race Race: #{user.race}
+              #religion Religion: #{user.religion}
+              #age Age: #{user.age}
+              #bodyType Body Type: #{user.bodyType}
+              #height Height: #{user.height}
