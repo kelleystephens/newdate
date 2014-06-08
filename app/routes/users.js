@@ -37,7 +37,7 @@ exports.register = (req, res)=> {
   User.create(req.body, u=> {
     if(u) {
       req.session.userId = u._id;
-      res.redirect(`/profile/${u._id}/setup`);
+      res.send(u);
     } else {
       req.session.userId = null;
       res.redirect('/');
