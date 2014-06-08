@@ -1,5 +1,6 @@
 /* global google */
 /* jshint unused:false */
+/* global moment */
 
 (function() {
   'use strict';
