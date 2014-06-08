@@ -1,0 +1,12 @@
+extends ../shared/template
+
+block content
+
+  each result in results
+    div.result
+      img(src='#{result.photo}')
+      p Name: #{result.name}
+      p Looking for: #{result.lookingFor}
+      p About #{result.name}: #{result.about}
+      p
+        a(href='/profile/#{result._id}') View #{result.name}'s Profile

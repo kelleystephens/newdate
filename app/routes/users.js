@@ -44,7 +44,7 @@ exports.profileEdit = (req, res)=> {
 exports.dashboard = (req, res)=> {
   User.findById(req.session.userId.toString(), user=>{
     Activity.findByLocation(user, activities=>{
-      Message.findAllByToUserId(user._id.toString(), messages=>{
+      Message.findAllByToUserId(user._id, messages=>{
         res.render('users/dashboard', {user: user, activities: activities, messages: messages, title: 'Dashboard'});
       });
     });
@@ -79,5 +79,17 @@ exports.login = (req, res, next)=> {
       req.session.userId = null;
       res.redirect('/');
     }
+  });
+};
+
+exports.search = (req, res)=>{
+  User.search(req.query, res.locals.user, results=>{
+    console.log('req.query: ');
+    console.log(req.query);
+    console.log('res.locals.user: ');
+    console.log(res.locals.user);
+    console.log('results of search: ');
+    console.log(results);
+    res.render('users/results', {results:results});
   });
 };

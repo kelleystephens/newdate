@@ -266,12 +266,12 @@ ul.navigation li {
 	left bottom,
 	color-stop(0, #949E88),
 	color-stop(1, #BCC4B5)
-);
-background-image: -o-linear-gradient(bottom, #949E88 0%, #BCC4B5 100%);
-background-image: -moz-linear-gradient(bottom, #949E88 0%, #BCC4B5 100%);
-background-image: -webkit-linear-gradient(bottom, #949E88 0%, #BCC4B5 100%);
-background-image: -ms-linear-gradient(bottom, #949E88 0%, #BCC4B5 100%);
-background-image: linear-gradient(to bottom, #949E88 0%, #BCC4B5 100%);
+  );
+  background-image: -o-linear-gradient(bottom, #949E88 0%, #BCC4B5 100%);
+  background-image: -moz-linear-gradient(bottom, #949E88 0%, #BCC4B5 100%);
+  background-image: -webkit-linear-gradient(bottom, #949E88 0%, #BCC4B5 100%);
+  background-image: -ms-linear-gradient(bottom, #949E88 0%, #BCC4B5 100%);
+  background-image: linear-gradient(to bottom, #949E88 0%, #BCC4B5 100%);
 }
 
 #name2:before{
@@ -350,6 +350,27 @@ background-image: linear-gradient(to bottom, #949E88 0%, #BCC4B5 100%);
   text-transform: capitalize;
 }
 
+// .activitydescription {
+//   border-bottom: 1px solid gray;
+//   padding-bottom: 5px;
+//   border-length: 10px;
+// }
+
+#subject, #messagebody {
+  margin: auto;
+  display: block;
+}
+
+#toUser, #fromUser {
+  margin-bottom: 10px;
+  font-size: 17px;
+  color: #5A6E79;
+}
+
+#subject.form-control, #messagebody {
+  width: 550px;
+  margin-bottom: 10px;
+}
 
 /* NAVBAR STYLING */
 
@@ -491,12 +512,30 @@ a.navbar-text {
 
 /* Dashboard Page Design */
 
+.a_demo_four.view:hover, .a_demo_four.edit:hover {
+  text-decoration: none;
+  color: #B56C63;
+}
+
 /* Search Section */
+
+.dashboardsearch {
+  margin-bottom: 20px !important;
+  font-weight: normal !important;
+  background-color: #B56C63 !important;
+  text-shadow: none !important;
+}
+
+.dashboardsearch:hover {
+  background-color: #5A6E79 !important;
+  text-shadow: none !important;
+  color: white !important;
+}
 
 .searchlegend {
   width: 100% !important;
   text-align: center !important;
-  background-color: white !important;
+  background-color: #8DB3A9 !important;
   color: #444444 !important;
   text-shadow: none !important;
   font-weight: normal !important;
@@ -521,13 +560,15 @@ legend.searchlegend.s{
 #steps.step.cover{
   width: 40% !important;
   margin: 20px !important;
+  border-radius: 20px;
+  box-shadow: 4px 4px 7px #545454 !important;
 }
 
 #steps.step.cover.right{
   position: absolute;
   right: 20px;
-  border: 1px solid black;
-  border-radius: 7px;
+  //border: 1px solid black;
+  border-radius: 20px;
   height: 350px;
 }
 
@@ -643,14 +684,16 @@ button.btn.search:hover{
 #steps.step.cover.clear{
   height: 500px;
   clear: both;
-  border-radius: 7px;
+  border-radius: 20px !important;
   overflow: auto;
-  background: white;
+  background-color: #8DB3A9;
   border-radius: 7px;
 }
 
-.actH3{
-  border-bottom: 2px solid black;
+.actH3.inbox {
+  border-bottom: 2px solid #4B3F39;
+  padding-bottom: 20px;
+  margin: 10px;
 }
 
 .activity {
@@ -661,13 +704,19 @@ button.btn.search:hover{
 }
 
 .activity:nth-child(even) {
-  background-color: #BCBCBC;
+  background-color: #F5EEDF;
   border-radius: 7px;
 }
 
-.activityname, .activitydate, .activitydescription {
+.activityname a, .activitydate a, .activitydescription a {
   margin-bottom: 10px;
   diplay: inline-block;
+  color: #B56C63;
+}
+
+.activityname a:hover {
+  text-decoration: none !important;
+  color: #5A6E79;
 }
 
 .activityname {
@@ -679,18 +728,32 @@ button.btn.search:hover{
 #steps.step.cover.clear.right{
   top: 500px;
   height: 620px;
+  border-radius: 20px;
 }
 
 /* Writing a Message Styling */
 
-#messageh1 {
+#messagediv {
+  border-radius: 20px;
+  //border: 1px solid black;
+  width: 700px;
+  margin: auto;
+  height: 450px;
   margin-top: 100px;
-  color: #B56C63;
+  background-color: #8DB3A9;
+  box-shadow: 4px 4px 7px #545454 !important;
+}
+
+#messageh1 {
+  padding-top: 30px;
+  color: #FDFEE9;
 }
 
 #sendmessage {
-  background-color: #8DB3A9;
-  border-color: #8DB3A9;
+  background-color: #B56C63;
+  border-color: #B56C63;
+  color: #FDFEE9;
+  margin-top: 20px;
 }
 
 #sendmessage:hover {
@@ -700,13 +763,26 @@ button.btn.search:hover{
 }
 
 /* Activity Show Page Styling */
-#activityname {
+
+#showactivity {
+  border-radius: 20px;
+  //border: 1px solid black;
+  width: 700px;
+  margin: auto;
+  height: 400px;
   margin-top: 100px;
-  font-weight: bolder;
-  color: #8DB3A9;
+  background-color: #8DB3A9;
+  box-shadow: 4px 4px 7px #545454 !important;
+  padding-top: 15px;
 }
 
-p.activity {
+#activityname {
+  //margin-top: 100px !important;
+  font-weight: bold;
+  color: #FDFEE9;
+}
+
+p.activityinfo {
   font-size: 20px;
   font-weight: bolder;
   color: #B56C63;
@@ -735,3 +811,16 @@ h4 {
 // .rsvp {
 //   background-color:
 // }
+
+.rsvp {
+  margin-top: 10px;
+  background-color: #FDFEE9;
+  border-color: #FDFEE9;
+  color: #B56C63;
+}
+
+.rsvp:hover {
+  background-color: #B56C63;
+  border-color: #B56C63;
+  color: #FDFEE9;
+}
