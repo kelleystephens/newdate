@@ -11,8 +11,9 @@ block content
     //#date #{moment().format('MM/DD/YYYY')}
 
     form(action='/message/#{toUser._id}', method='post')
-      input(type='hidden', value='fromUser._id')
+      input(type='hidden', value='#{fromUser._id}', name='fromUserId')
+      input(type='hidden', value='#{toUser._id}', name='toUserId')
       input#subject.form-control(type='text', placeholder='Subject', name='subject')
-      textarea(rows='7', placeholder='Type Your Message Here', name='message')#messagebody.form-control
+      textarea(rows='7', placeholder='Type Your Message Here', name='body')#messagebody.form-control
 
       button.btn.btn-primary#sendmessage Send Message

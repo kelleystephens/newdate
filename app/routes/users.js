@@ -44,7 +44,8 @@ exports.profileEdit = (req, res)=> {
 exports.dashboard = (req, res)=> {
   User.findById(req.session.userId.toString(), user=>{
     Activity.findByLocation(user, activities=>{
-      Message.findAllByToUserId(user._id.toString(), messages=>{
+      Message.findAllByToUserId(user._id, messages=>{
+        console.log(messages);
         res.render('users/dashboard', {user: user, activities: activities, messages: messages, title: 'Dashboard'});
       });
     });
