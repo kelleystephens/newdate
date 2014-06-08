@@ -11,7 +11,23 @@ html
     link(href='/less/app.css', rel='stylesheet')
 
   body
-    a(href='/logout') Logout
+    .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+        .container-fuild
+            .nav-bar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+            .navbar-collapse.collapse
+              if(user)
+                ul.nav.navbar-nav.navbar-left
+                  li: a.navbar-text(href='/dashboard') Dashboard
+                ul.nav.navbar-nav.navbar-right
+                  li: a.navbar-text(href='#') Welcome, #{user.name}
+                  li: a.navbar-text(href='/logout') Logout
+
+    //a(href='/logout') Logout
     if(!user)
       div#container_demo
         // hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4
