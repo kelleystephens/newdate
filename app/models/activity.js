@@ -16,7 +16,7 @@ class Activity{
     activity.coordinates = obj.coordinates.map(n=>n*1);
     activity.tags = obj.tags.split(',').map(t=>t.trim().toLowerCase());
     activityCollection.save(activity, ()=>fn(activity));
-    // activity.save(()=>fn(activity));
+    activity.save(()=>fn(activity));
   }
 
   static findAll(fn){

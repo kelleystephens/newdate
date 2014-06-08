@@ -1,20 +1,38 @@
+/* jshint unused:false */
+
 'use strict';
 
+var multiparty = require('multiparty');
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
 var Activity = traceur.require(__dirname + '/../models/activity.js');
 var Message = traceur.require(__dirname + '/../models/message.js');
 
+exports.logout = (req, res)=> {
+  req.session.userId = null;
+  res.redirect('/');
+};
+
+exports.all = (req, res)=> {
+  User.findAll(users=>{
+    res.render('users/all', {users: users, title: 'All Users'});
+  });
+};
+
 exports.profile = (req, res)=> {
-  User.findById(req.session.userId.toString(), user=>{
+  User.findById(req.params.id.toString(), user=>{
     res.render('users/profile', {user: user, title: `${user.name}`});
   });
 };
 
 exports.update = (req, res)=> {
   User.findById(req.session.userId, u=>{
-    u.update(req.body, ()=>{
-    res.redirect('/dashboard');
+    var form = new multiparty.Form();  //this is just how you use multiparty to pull pics
+    form.parse(req, (err, fields, files)=>{
+      fields.photo = files.photo;
+      u.update(fields, u=>{
+        res.redirect('/dashboard');
+      });
     });
   });
 };
@@ -26,7 +44,7 @@ exports.profileEdit = (req, res)=> {
 exports.dashboard = (req, res)=> {
   User.findById(req.session.userId.toString(), user=>{
     Activity.findByLocation(user, activities=>{
-      Message.findByToUserId(user._id.toString(), messages=>{
+      Message.findAllByToUserId(user._id.toString(), messages=>{
         res.render('users/dashboard', {user: user, activities: activities, messages: messages, title: 'Dashboard'});
       });
     });

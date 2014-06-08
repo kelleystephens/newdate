@@ -53,6 +53,10 @@ class User{
     Base.findByLocation(obj, userCollection, User, fn);
   }
 
+  static findAll(fn){
+    Base.findAll(userCollection, User, fn);
+  }
+
   static search(query, user, fn){
 
     var lat = user.coordinates[0] * 1;
@@ -111,14 +115,14 @@ class User{
   }
 
   update(obj, fn){
-    this.sex = obj.sex;
-    this.lookingFor = obj.lookingFor.split(',').map(s=>s.trim());
-    this.race = obj.race;
-    this.religion = obj.religion;
-    this.bodyType = obj.bodyType;
-    this.height = obj.height;
-    this.about = obj.about;
-    this.age = obj.age * 1;
+    this.sex = obj.sex[0];
+    this.lookingFor = obj.lookingFor[0].split(',').map(s=>s.trim());
+    this.race = obj.race[0];
+    this.religion = obj.religion[0];
+    this.bodyType = obj.bodyType[0];
+    this.height = obj.height[0];
+    this.about = obj.about[0];
+    this.age = obj.age[0] * 1;
     this.photo = `/img/${this._id.toString()}/${obj.photo[0].originalFilename}`;
 
     var path = obj.photo[0].path;
@@ -141,7 +145,6 @@ class User{
   save(fn){
     userCollection.save(this, ()=>fn(this));
   }
-
 }
 
 module.exports = User;
