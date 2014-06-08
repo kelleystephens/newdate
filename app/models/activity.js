@@ -10,7 +10,7 @@ class Activity{
     activity._id = Mongo.ObjectID(obj._id);
     activity.name = obj.name;
     activity.date = new Date(obj.date);
-    activity.userIds = [];
+    activity.attendees = [];
     activity.description = obj.description;
     activity.address = obj.address;
     activity.coordinates = obj.coordinates.map(n=>n*1);
@@ -29,6 +29,22 @@ class Activity{
 
   static findByLocation(obj, fn){
     Base.findByLocation(obj, activityCollection, Activity, fn);
+  }
+
+  rsvp(user, fn){
+    var u = {
+      userId: user._id.toString(),
+      name: user.name,
+      photo: user.photo
+    };
+
+    this.attendees.push(u);
+
+    this.save(()=>fn(this));
+  }
+
+  save(fn){
+    activityCollection.save(this, ()=>fn(this));
   }
 }
 

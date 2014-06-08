@@ -12,8 +12,10 @@ var request = require('supertest');
 var traceur = require('traceur');
 var factory = traceur.require(__dirname + '/../../helpers/factory.js');
 var moment = require('moment');
+var cp = require('child_process');
 
 var Activity;
+var User;
 
 describe('Activity', function(){
   before(function(done){
@@ -21,6 +23,7 @@ describe('Activity', function(){
     .get('/')
     .end(function(){
       Activity = traceur.require(__dirname + '/../../../app/models/activity.js');
+      User = traceur.require(__dirname + '/../../../app/models/user.js');
       done();
     });
   });
@@ -28,7 +31,86 @@ describe('Activity', function(){
   beforeEach(function(done){
     global.nss.db.collection('activities').remove(function(){
       factory('activity', function(activities){
-        done();
+
+        global.nss.db.collection('users').remove(function(){
+          cp.execFile(__dirname + '/../../pictures/before.sh', {cwd:__dirname + '/../../pictures'}, function(err, stdout, stderr){
+            factory('user', function(users){
+              var bill = {
+                'sex': 'male',
+                'lookingFor': 'male, female',
+                'race': 'american indian',
+                'religion': 'buddhist',
+                'age': '23',
+                'bodyType': 'athletic',
+                'height': '74',
+                'about': 'looking for hotties',
+                'photo': [{
+                  'originalFilename': 'profilePic1.jpg',
+                  'path': '../../test/pictures/copy/profilePic1.jpg',
+                  'size': 10
+                  }]
+              };
+
+              var mark = {
+                'sex': 'male',
+                'lookingFor': 'male',
+                'race': 'black',
+                'religion': 'muslim',
+                'age': '24',
+                'bodyType': 'ripped',
+                'height': '70',
+                'about': 'Im so lonely',
+                'photo': [{
+                  'originalFilename': 'profilePic2.jpg',
+                  'path': '../../test/pictures/copy/profilePic2.jpg',
+                  'size': 10
+                  }]
+              };
+
+              var sue = {
+                'sex': 'female',
+                'lookingFor': 'male',
+                'race': 'black',
+                'religion': 'muslim',
+                'age': '24',
+                'bodyType': 'ripped',
+                'height': '70',
+                'about': 'lyke hiiiiiii!!!!!!!1!',
+                'photo': [{
+                  'originalFilename': 'profilePic3.jpg',
+                  'path': '../../test/pictures/copy/profilePic3.jpg',
+                  'size': 10
+                  }]
+              };
+
+              var alex = {
+                'sex': 'female',
+                'lookingFor': 'female',
+                'race': 'white',
+                'religion': 'christian',
+                'age': '24',
+                'bodyType': 'slender',
+                'height': '55',
+                'about': 'I want someone to build canoes with',
+                'photo': [{
+                  'originalFilename': 'profilePic4.jpg',
+                  'path': '../../test/pictures/copy/profilePic4.jpg',
+                  'size': 10
+                  }]
+              };
+
+              users[0].update(bill, function () {
+                users[1].update(mark, function () {
+                  users[2].update(sue, function () {
+                    users[3].update(alex, function () {
+                      done();
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
       });
     });
   });
@@ -50,7 +132,7 @@ describe('Activity', function(){
         expect(a._id).to.be.an.instanceof(Mongo.ObjectID);
         expect(a.name).to.equal('Derping');
         expect(moment(a.date).format('MM/DD/YYYY')).to.equal('06/13/2014');
-        expect(a.userIds.length).to.equal(0);
+        expect(a.attendees.length).to.equal(0);
         expect(a.description).to.equal('Join us for some serious herpderp.');
         expect(a.address).to.equal('91 Herp Lane, Suite 108, Brentwood, TN 37208');
         expect(a.coordinates).to.be.an('array');
@@ -97,6 +179,21 @@ describe('Activity', function(){
         expect(activity).to.be.instanceof(Activity);
         expect(activity._id.toString()).to.equal('0123456789abcdef01234568');
         done();
+      });
+    });
+  });
+
+  describe('#rsvp', function () {
+    it('should RSVP the user to the event', function (done) {
+      User.findById('0123456789abcdef01234567', function (user) {
+        Activity.findById('0123456789abcdef01234568', function (activity) {
+          activity.rsvp(user, function (activity) {
+            expect(activity).to.be.ok;
+            expect(activity).to.be.instanceof(Activity);
+            expect(activity._id.toString()).to.equal('0123456789abcdef01234568');
+            done();
+          });
+        });
       });
     });
   });

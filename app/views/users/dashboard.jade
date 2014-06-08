@@ -52,9 +52,9 @@ block content
               option(value='more to love') More To Love
               option(value='stocky') Stocky
               option(value='any') No Preference
-        button.dashboardsearch.btn.btn-primary Search      
+        button.dashboardsearch.btn.btn-primary Search
     #steps.step.cover.right
-      #profilepic
+      #profilepic(style='background-image: url(#{user.photo})')
       .btns
         a.a_demo_four.view(href='/profile/#{user._id}') View Profile
       .btns
