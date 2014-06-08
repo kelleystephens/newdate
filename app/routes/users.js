@@ -1,5 +1,8 @@
+/* jshint unused:false */
+
 'use strict';
 
+var multiparty = require('multiparty');
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
 var Activity = traceur.require(__dirname + '/../models/activity.js');
@@ -24,8 +27,12 @@ exports.profile = (req, res)=> {
 
 exports.update = (req, res)=> {
   User.findById(req.session.userId, u=>{
-    u.update(req.body, ()=>{
-    res.redirect('/dashboard');
+    var form = new multiparty.Form();  //this is just how you use multiparty to pull pics
+    form.parse(req, (err, fields, files)=>{
+      fields.photo = files.photo;
+      u.update(fields, u=>{
+        res.redirect('/dashboard');
+      });
     });
   });
 };

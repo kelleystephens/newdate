@@ -6,7 +6,7 @@ block content
 
   #rapper
     #steps
-        form#formElem(name='formElem', action='/profile/#{user.id}/setup', method='post')
+        form#formElem(name='formElem', action='/profile/#{user._id}/setup', method='post', enctype='multipart/form-data')
           fieldset.step
             legend.basics Basics
             p
@@ -85,6 +85,7 @@ block content
                 option(value='6-5') Above 6'5"
             p
               label.setup Upload a Profile Picture
+              input(type='file', name='photo')
           fieldset.step
             legend.about About
             p
