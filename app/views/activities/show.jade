@@ -2,16 +2,22 @@ extends ../shared/template
 
 block content
 
-  #showactivity
+  h1#activityname #{activity.name}
+  h4 #{activity.date}
+  p.activity Description:
+  h4 #{activity.description}
+  p.activity Address:
+  h4 #{activity.address}
+  p.activity Tags:
+  h4 #{activity.tags}
 
-    h1#activityname #{activity.name}
-    h4 #{activity.date}
-    p.activityinfo Description:
-    h4 #{activity.description}
-    p.activityinfo Address:
-    h4 #{activity.address}
-    p.activityinfo Tags:
-    h4 #{activity.tags}
+  form(action='/activity/rsvp/#{activity._id}', method='POST')
+    button.btn.btn-primary.rsvp RSVP to this Activity
 
-    form(method='post', action='activity/activity._id/user._id')
-      button.btn.btn-primary.rsvp RSVP
+
+  h1 See Who's Going
+    each attendee in activity.attendees
+      div.attendee
+        a(href='/profile/#{attendee.userId.toString()}')
+          img(src='#{attendee.photo}')
+          h1 #{attendee.name}
