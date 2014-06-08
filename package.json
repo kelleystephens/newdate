@@ -32,7 +32,8 @@
     "cookies":         "*",
     "async":           "*",
     "request":         "*",
-    "multiparty":      "*"
+    "multiparty":      "*",
+    "rimraf":          "*"
   },
   "devDependencies": {
     "grunt":                "*",

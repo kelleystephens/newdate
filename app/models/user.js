@@ -1,11 +1,12 @@
+/* jshint unused: false */
+
 var bcrypt = require('bcrypt');
 var userCollection = global.nss.db.collection('users');
 var Mongo = require('mongodb');
 var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
-// var crypto = require('crypto');
 var fs = require('fs');
-// var path = require('path');
+var rimraf = require('rimraf');
 
 class User{
   static create(obj, fn){
@@ -22,8 +23,6 @@ class User{
         user.name = obj.name;
         user.zip = obj.zip;
         user.coordinates = obj.coordinates.map(n=>n*1);
-        user.photos = [];
-        user.processPhotos(obj.photo);
         user.save(()=>fn(user));
       }else{
         fn(null);
@@ -54,24 +53,65 @@ class User{
     Base.findByLocation(obj, userCollection, User, fn);
   }
 
-  processPhotos(photos){
-    photos.forEach(p=>{
-      if(p.size){
-        var path = p.path;
+  static search(query, user, fn){
 
-        if(path[0] !== '/'){
-           path = __dirname + '/' + path;
-        }
+    var lat = user.coordinates[0] * 1;
+    var lng = user.coordinates[1] * 1;
+    var oneMile = 0.000250;
+    var maxDistance = query.maxDistance ? ((query.maxDistance * 1) * oneMile) : 50000;
 
-        var userDir = `${__dirname}/../static/img/${this._id.toString()}`;
-        var fileDir =  `${userDir}/${p.originalFilename}`;
+    var filter = {
+      coordinates: {$nearSphere:[lat, lng],$maxDistance:maxDistance}
+    };
 
-        if(!fs.existsSync(userDir)){fs.mkdirSync(userDir);}
+    if(user.lookingFor.length === 2){
+      filter.$or = [{sex: user.lookingFor[0]}, {sex: user.lookingFor[1]}];
+    }else{
+      filter.sex = user.lookingFor[0];
+    }
 
-        fs.renameSync(path, fileDir);
+    if(query.race !== 'any'){
+      filter.race = query.race;
+    }
 
-        this.photos.push(fileDir);
+    if(query.religion !== 'any'){
+      filter.religion = query.religion;
+    }
+
+    if(query.bodyType !== 'any'){
+      filter.bodyType = query.bodyType;
+    }
+
+    if(query.ageRange !== 'any'){
+      var maxAge = user.age + query.ageRange * 1;
+      var minAge = user.age - query.ageRange * 1;
+      filter.age = { $gte: minAge, $lte: maxAge };
+    }
+
+    var height;
+
+    if(query.heightRange !== 'any'){
+      if(query.heightRange === 'u59'){
+        height = query.heightRange.trim('u') * 1;
+        filter.height = {$lt: height};
+      }else if(query.heightRange === 'o77'){
+        height = query.heightRange.trim('o') * 1;
+        filter.height = {$gt: height};
+      }else{
+        height = query.heightRange.split('-');
+        filter.height = {$lte: height[1], $gte: height[0]}  ;
       }
+    }
+
+
+
+    console.log('THIS IS THE FILTER!!!!!!!');
+    console.log(filter);
+
+    userCollection.find(filter).toArray((err, users)=>{
+      console.log('THESE ARE THE USERS!!!!!!!');
+      console.log(users);
+      fn(users);
     });
   }
 
@@ -84,7 +124,23 @@ class User{
     this.height = obj.height;
     this.about = obj.about;
     this.age = obj.age * 1;
-    this.save(()=>fn(this));
+    this.photo = `/img/${this._id.toString()}/${obj.photo[0].originalFilename}`;
+
+    var path = obj.photo[0].path;
+    if(path[0] !== '/'){path = __dirname + '/' + path;}
+    var userDir = `${__dirname}/../static/img/${this._id.toString()}`;
+    var fileDir =  `${userDir}/${obj.photo[0].originalFilename}`;
+    if(!fs.existsSync(userDir)){
+      fs.mkdirSync(userDir);
+      fs.renameSync(path, fileDir);
+      this.save(()=>fn(this));
+    }else{
+      rimraf(userDir, ()=>{
+        fs.mkdirSync(userDir);
+        fs.renameSync(path, fileDir);
+        this.save(()=>fn(this));
+      });
+    }
   }
 
   save(fn){

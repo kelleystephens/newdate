@@ -12,7 +12,7 @@ var request = require('supertest');
 var traceur = require('traceur');
 var factory = traceur.require(__dirname + '/../../helpers/factory.js');
 var cp = require('child_process');
-var fs = require('fs');
+// var fs = require('fs');
 
 var User;
 
@@ -30,7 +30,79 @@ describe('User', function(){
     global.nss.db.collection('users').remove(function(){
       cp.execFile(__dirname + '/../../pictures/before.sh', {cwd:__dirname + '/../../pictures'}, function(err, stdout, stderr){
         factory('user', function(users){
-          done();
+          var bill = {
+            'sex': 'male',
+            'lookingFor': 'male, female',
+            'race': 'american indian',
+            'religion': 'buddhist',
+            'age': '23',
+            'bodyType': 'athletic',
+            'height': '74',
+            'about': 'looking for hotties',
+            'photo': [{
+              'originalFilename': 'profilePic1.jpg',
+              'path': '../../test/pictures/copy/profilePic1.jpg',
+              'size': 10
+              }]
+          };
+
+          var mark = {
+            'sex': 'male',
+            'lookingFor': 'male',
+            'race': 'black',
+            'religion': 'muslim',
+            'age': '24',
+            'bodyType': 'ripped',
+            'height': '70',
+            'about': 'Im so lonely',
+            'photo': [{
+              'originalFilename': 'profilePic2.jpg',
+              'path': '../../test/pictures/copy/profilePic2.jpg',
+              'size': 10
+              }]
+          };
+
+          var sue = {
+            'sex': 'female',
+            'lookingFor': 'male',
+            'race': 'black',
+            'religion': 'muslim',
+            'age': '24',
+            'bodyType': 'ripped',
+            'height': '70',
+            'about': 'lyke hiiiiiii!!!!!!!1!',
+            'photo': [{
+              'originalFilename': 'profilePic3.jpg',
+              'path': '../../test/pictures/copy/profilePic3.jpg',
+              'size': 10
+              }]
+          };
+
+          var alex = {
+            'sex': 'female',
+            'lookingFor': 'female',
+            'race': 'white',
+            'religion': 'christian',
+            'age': '24',
+            'bodyType': 'slender',
+            'height': '55',
+            'about': 'I want someone to build canoes with',
+            'photo': [{
+              'originalFilename': 'profilePic4.jpg',
+              'path': '../../test/pictures/copy/profilePic4.jpg',
+              'size': 10
+              }]
+          };
+
+          users[0].update(bill, function () {
+            users[1].update(mark, function () {
+              users[2].update(sue, function () {
+                users[3].update(alex, function () {
+                  done();
+                });
+              });
+            });
+          });
         });
       });
     });
@@ -61,10 +133,6 @@ describe('User', function(){
       fields.photo = files.photo;
 
       User.create(fields, function(u){
-
-        var imgExists = fs.existsSync(__dirname + '/../../../app/static/img/'+ u._id.toString() +'/profilePic6.jpg');
-        expect(imgExists).to.be.true;
-
         expect(u).to.be.ok;
         expect(u).to.be.an.instanceof(User);
         expect(u._id).to.be.an.instanceof(Mongo.ObjectID);
@@ -148,7 +216,7 @@ describe('User', function(){
   });
 
   describe('#update', function () {
-    it('should update a user', function (done) {
+    it('should update a user - no profile pic', function (done) {
       User.findById('0123456789abcdef01234567', function (user) {
 
         var obj = {
@@ -158,7 +226,48 @@ describe('User', function(){
           bodyType: 'hourglass with extra minutes',
           height: '5-6',
           about: 'I am a successful, independent black woman looking for love.',
-          lookingFor: 'Male, Female'
+          lookingFor: 'Male, Female',
+          photo: [{
+            originalFilename: 'profilePic6.jpg',
+            path: '../../test/pictures/copy/profilePic6.jpg',
+            size: 10
+          }]
+        };
+
+        user.update(obj, function (user) {
+          expect(user).to.be.ok;
+          expect(user).to.be.instanceof(User);
+          expect(user._id).to.be.instanceof(Mongo.ObjectID);
+          expect(user._id.toString()).to.deep.equal('0123456789abcdef01234567');
+          expect(user.email).to.equal('bill@aol.com');
+          expect(user.zip).to.equal('37203');
+          expect(user.sex).to.equal('female');
+          expect(user.race).to.equal('black');
+          expect(user.religion).to.equal('Jewish');
+          expect(user.bodyType).to.equal('hourglass with extra minutes');
+          expect(user.height).to.equal('5-6');
+          expect(user.about).to.equal('I am a successful, independent black woman looking for love.');
+          done();
+        });
+      });
+    });
+
+    it('should update a user - existing profile pic', function (done) {
+      User.findById('0123456789abcdef01234567', function (user) {
+
+        var obj = {
+          sex: 'female',
+          race: 'black',
+          religion: 'Jewish',
+          bodyType: 'hourglass with extra minutes',
+          height: '5-6',
+          about: 'I am a successful, independent black woman looking for love.',
+          lookingFor: 'male, female',
+          photo: [{
+            originalFilename: 'profilePic5.jpg',
+            path: '../../test/pictures/copy/profilePic5.jpg',
+            size: 10
+          }]
         };
 
         user.update(obj, function (user) {
@@ -190,6 +299,30 @@ describe('User', function(){
         expect(users[0]._id).to.be.instanceof(Mongo.ObjectID);
         expect(users[0].zip).to.equal('37203');
         done();
+      });
+    });
+  });
+
+  describe('.search', function () {
+    it('should find a user by the query parameters', function (done) {
+      User.findById('0123456789abcdef01234567', function (user) {
+        var query = {
+          maxDistance: '30',
+          race: 'black',
+          religion: 'muslim',
+          bodyType: 'ripped',
+          ageRange: '5',
+          heightRange: '65-71'
+        };
+
+        User.search(query, user, function (users) {
+          console.log('THESE ARE THE USER RESULTS!!!!!!!!!!');
+          console.log(users);
+          expect(users).to.be.ok;
+          expect(users).to.be.an('array');
+          expect(users[0].name).to.equal('mark');
+          done();
+        });
       });
     });
   });
