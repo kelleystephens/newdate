@@ -31,14 +31,26 @@ class Activity{
   }
 
   rsvp(user, fn){
+    console.log('User input: ');
+    console.log(user);
     var u = {
       userId: user._id.toString(),
       name: user.name,
       photo: user.photo
     };
+    console.log('u object: ');
+    console.log(u);
+
+    console.log('this: ');
+    console.log(this);
+
+    console.log('this.attendees before: ');
+    console.log(this.attendees);
 
     this.attendees.push(u);
 
+    console.log('this.attendees after: ');
+    console.log(this.attendees);
     this.save(()=>fn(this));
   }
 

@@ -33,6 +33,7 @@ function load(app, fn){
   app.get('/message/:toId', dbg, messages.write);
   app.post('/message/:toId', dbg, messages.create);
   app.get('/activity/:id', dbg, activities.show);
+  app.post('/activity/rsvp/:aid', dbg, activities.rsvp);
   app.get('/all', dbg, users.all);
 
   console.log('Routes Loaded');

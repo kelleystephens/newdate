@@ -11,4 +11,13 @@ block content
   p.activity Tags:
   h4 #{activity.tags}
 
-  button.btn.btn-primary.rsvp RSVP to this Activity
+  form(action='/activity/rsvp/#{activity._id}', method='POST')
+    button.btn.btn-primary.rsvp RSVP to this Activity
+
+
+  h1 See Who's Going
+    each attendee in activity.attendees
+      div.attendee
+        a(href='/profile/#{attendee.userId.toString()}')
+          img(src='#{attendee.photo}')
+          h1 #{attendee.name}
