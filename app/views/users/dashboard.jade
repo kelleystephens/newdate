@@ -4,22 +4,21 @@ block content
   .container-fluid
     #steps.step.cover
       form#formElem(name='formElem', action='', method='post')
-        fieldset.step
-          legend.searchlegend Search
+        fieldset.step.holder
+          legend.searchlegend.s Search
           p.allp
-            label.labels Zipcode
-            input.searchzip.form-control(type='text', placeholder='Zip Code', name='zip')
-          p.allp
-            label.labels Looking For
-            select#lookingfor(name='lookingfor')
-              option(value='lookingfor') Select
-              option(value='male') Male
-              option(value='female') Female
-              option(value='male, female') Both
+            label.labels Age
+            select.selects#age(name='age')
+              option(value='any') Select Age Range
+              option(value='5') Within 5 years
+              option(value='10') Within 10 years
+              option(value='15') Within 15 years
+              option(value='20') Within 20 years
+              option(value='any') No Preference
           p.allp
             label.labels Religion
-            select#religion(name='religion')
-              option(value='religion') Select Religion
+            select.selects#religion(name='religion')
+              option(value='any') Select Religion
               option(value='christian') Christian
               option(value='jewish') Jewish
               option(value='muslim') Muslim
@@ -29,19 +28,21 @@ block content
               option(value='agnostic') Agnostic
               option(value='other') Other
               option(value='none') None
+              option(value='any') No Preference
           p.allp
             label.labels Height
-            select#height(name='height')
-              option(value='height') Select Height
-              option(value='under 4-11') Under 4'11"
-              option(value='4-11 to 5-4') 4'11" to 5'4"
-              option(value='5-5 to 5-11') 5'5" to 5'11"
-              option(value='6-0 to 6-5') 6'0" to 6'5"
-              option(value='6-5') Above 6'5"
+            select.selects#height(name='height')
+              option(value='any') Select Height
+              option(value='u59') Under 4'11"
+              option(value='59-64') 4'11" to 5'4"
+              option(value='65-71') 5'5" to 5'11"
+              option(value='72-77') 6'0" to 6'5"
+              option(value='o77') Above 6'5"
+              option(value='any') No Preference
           p.allp
             label.labels Body Type
-            select#bodytype(name='bodytype')
-              option(value='body type') Select Body Type
+            select.selects#bodytype(name='bodytype')
+              option(value='any') Select Body Type
               option(value='slender') Slender
               option(value='petite') Petite
               option(value='fit') Fit
@@ -50,73 +51,26 @@ block content
               option(value='hour glass with extra minutes') Hour Glass With Extra Minutes
               option(value='more to love') More To Love
               option(value='stocky') Stocky
-
-  //- .container
-  //-   #rapper.step
-  //-     #steps.step
-  //-       form#formElem(name='formElem', action='', method='post')
-  //-         fieldset.step
-  //-           legend.searchlegend Search
-  //-           input.searchzip.form-control(type='text', placeholder='Zip Code', name='zip')
-  //-           p
-  //-             label.labels Looking For
-  //-             select#lookingfor(name='lookingfor')
-  //-               option(value='lookingfor') Select
-  //-               option(value='male') Male
-  //-               option(value='female') Female
-  //-               option(value='male, female') Both
-  //-           p
-  //-             label.labels Religion
-  //-             select#religion(name='religion')
-  //-               option(value='religion') Select Religion
-  //-               option(value='christian') Christian
-  //-               option(value='jewish') Jewish
-  //-               option(value='muslim') Muslim
-  //-               option(value='hindu') Hindu
-  //-               option(value='buddhist') Buddhist
-  //-               option(value='atheist') Atheist
-  //-               option(value='agnostic') Agnostic
-  //-               option(value='other') Other
-  //-               option(value='none') None
-  //-           p
-  //-             label.labels Height
-  //-             select#height(name='height')
-  //-               option(value='height') Select Height
-  //-               option(value='under 4-11') Under 4'11"
-  //-               option(value='4-11 to 5-4') 4'11" to 5'4"
-  //-               option(value='5-5 to 5-11') 5'5" to 5'11"
-  //-               option(value='6-0 to 6-5') 6'0" to 6'5"
-  //-               option(value='6-5') Above 6'5"
-  //-           p
-  //-             label.labels Body Type
-  //-             select#bodytype(name='bodytype')
-  //-               option(value='body type') Select Body Type
-  //-               option(value='slender') Slender
-  //-               option(value='petite') Petite
-  //-               option(value='fit') Fit
-  //-               option(value='athletic') Athletic
-  //-               option(value='ripped') Ripped
-  //-               option(value='hour glass with extra minutes') Hour Glass With Extra Minutes
-  //-               option(value='more to love') More To Love
-  //-               option(value='stocky') Stocky
-  //-
-  //-   #profile
-  //-     a(href='/profile/#{user._id}') #{user.name}'s Profile Page
-  //-
-  //- .row
-  //-   #activities
-  //-     h3.activitiesrow Activities
-  //-       if(activities)
-  //-         each activity in activities
-  //-           .activity
-  //-             .activityname
-  //-               a(href='/activity/#{activity._id}') #{activity.name}
-  //-             .activitydate #{activity.date}
-  //-             .activitydescription #{activity.description}
-  //-
-  //-   #messages
-  //-     h3 Messages
-  //-       if(messages)
-  //-         each message in messages
-  //-           .message(class= mesage.classes)
-  //-             .messagesubject #{message.subject}
+              option(value='any') No Preference
+    #steps.step.cover.right
+      #profilepic
+      .btns
+        a.a_demo_four.view(href='/profile/#{user._id}') View Profile
+      .btns
+        a.a_demo_four.edit(href='/profile/#{user._id}/setup') Edit Profile
+    #steps.step.cover.clear
+      h3.actH3 Your Upcoming Activities
+      if(activities)
+        each activity in activities
+          .activity
+            .activityname
+              a(href='/activity/#{activity._id}') #{activity.name}
+            .activitydate #{activity.date}
+            .activitydescription #{activity.description}
+    #steps.step.cover.clear.right
+      h3.actH3 Inbox
+        if(messages)
+          each message in messages
+            .message(class= message.classes)
+              .messagesender #{message.fromUserIds}
+              .messagesubject #{message.subject}
