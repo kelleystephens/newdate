@@ -68,9 +68,11 @@ block content
             .activitydate #{activity.date}
             .activitydescription #{activity.description}
     #steps.step.cover.clear.right
-      h3.actH3 Inbox
-        if(messages)
-          each message in messages
-            .message(class= message.classes)
-              .messagesender #{message.fromUserIds}
-              .messagesubject #{message.subject}
+      h3.actH3.inbox Inbox
+      if(messages)
+        each message in messages
+          .message(class= message.classes)
+            .messagesender #{message.fromUserIds}
+            .messagesubject #{message.subject}
+      else
+        h2 You have no messages

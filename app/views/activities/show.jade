@@ -2,13 +2,16 @@ extends ../shared/template
 
 block content
 
-  h1#activityname #{activity.name}
-  h4 #{activity.date}
-  p.activity Description:
-  h4 #{activity.description}
-  p.activity Address:
-  h4 #{activity.address}
-  p.activity Tags:
-  h4 #{activity.tags}
+  #showactivity
 
-  button.btn.btn-primary.rsvp RSVP to this Activity
+    h1#activityname #{activity.name}
+    h4 #{activity.date}
+    p.activityinfo Description:
+    h4 #{activity.description}
+    p.activityinfo Address:
+    h4 #{activity.address}
+    p.activityinfo Tags:
+    h4 #{activity.tags}
+
+    form(method='post', action='activity/activity._id/user._id')
+      button.btn.btn-primary.rsvp RSVP

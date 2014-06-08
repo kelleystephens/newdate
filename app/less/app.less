@@ -1,120 +1,12 @@
 body {
   margin: auto !important;
   text-align: center !important;
-  margin-top: 50px;
+  margin-top: 50px !important;
   background-image: url('/img/halftone.png');
 }
 
-<<<<<<< HEAD
-.row {
-  margin: auto;
-  text-align: center;
-}
-
-.dashboard {
-  float: left;
-  position: absolute;
-  margin-left: 50px;
-  color: white;
-  margin-top: 30px;
-  font-size: 30px;
-}
-
-.username {
-  display: inline-block;
-  float: right;
-  margin-top: 30px;
-  margin-right: 150px;
-  font-size: 30px;
-  color: white;
-}
-
-#activities {
-  max-width: 40%;
-  height: 400px;
-  overflow: auto;
-  margin-left: 130px;
-  margin-top: 45px;
-  background-color: white;
-  //border-radius: 20px !important;
-  border-top-left-radius: 20px !important;
-  border-top-right-radius: 20px !important;
-  border-bottom-right-radius: 20px !important;
-  border-bottom-left-radius: 20px !important;
-  //float: right;
-  position: absolute;
-  //top: 75px;
-  border: 3px solid transparent;
-  ::-webkit-scrollbar {
-    width: 12px;
-    heigth: 50px;
-    //border-radius: 10px !important;
-  }
-
-  ::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-      border-radius: 10px;
-      heigth: 50px !important;
-  }
-
-  ::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-  }
-}
-
-#profile {
-  //max-width: 30% !important;
-  height: 500px;
-  // margin-left: 45px;
-  // margin-top: 20px;
-  // margin-right: 230px;
-  // margin-bottom: 45px;
-  background-color: white;
-  border-radius: 20px;
-  //float: right;
-  position: relative;
-  left: 800px;
-  top: 22px;
-}
-
-#messages {
-  //border: 1px solid tomato;
-  width: 30%;
-  height: 454px;
-  margin-left: 745px;
-  //margin-top: 45px;
-  //background-color: rgba(255,255,255,0.2);
-  background-color: white;
-  border-radius: 20px;
-  //float: right;
-  margin-right: 230px;
-  margin-top: -455px;
-}
-
-.searchzip {
-  margin-right: 10px;
-}
-
-.searchzip.form-control {
-  width: 150px;
-  display: inline;
-  // margin-left: 100px;
-}
-
-// fieldset.step{
-//   background-color: #8DB3A9;
-//   //border-radius: 7px;
-// }
-
-#steps {
-  background-color: #8DB3A9;
-  //border-radius: 7px;
-=======
 fieldset.step{
-  background: red;
-  border-radius: 7px;
->>>>>>> front-end
+  background: #8db3a9;
 }
 
 select {
@@ -122,6 +14,33 @@ select {
   margin-bottom: 10px;
   height: 35px;
 }
+
+/* Login/Register Styling */
+
+#wrapper h1 {
+  -webkit-text-fill-color: #5A6E79 !important;
+  //color: blue !important;
+}
+
+#wrapper p.button input {
+  background-color: #5A6E79;
+  border: none !important;
+}
+
+#wrapper p.button input:hover {
+  background-color: #A4ACAF;
+}
+
+#wrapper p.change_link a {
+  color: #6A9FAB;
+}
+
+#wrapper p.change_link a:hover {
+  color: #5A6E79;
+  border-color: #5A6E79;
+}
+
+/* Profile Setup Styling */
 
 #rapper.step {
   margin-top: 21px;
@@ -139,40 +58,74 @@ select {
   // margin-left: 100px;
   margin: auto;
   border: none !important;
-  // position:relative;
-  // -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset !important;
-  // -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset !important;
-  // box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset !important;
 }
-
-// #rapper:before, #rapper:after {
-//   content:"" !important;
-//   position:absolute !important;
-//   z-index:-1 !important;
-//   -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8) !important;
-//   -moz-box-shadow:0 0 20px rgba(0,0,0,0.8) !important;
-//   box-shadow:0 0 20px rgba(0,0,0,0.8) !important;
-//   top:0 !important;
-//   bottom:0 !important;
-//   left:10px !important;
-//   right:10px !important;
-//   -moz-border-radius:100px / 10px !important;
-//   border-radius:100px / 10px !important;
-// }
-//
-// #rapper:after {
-//   right:10px !important;
-//   left:auto !important;
-//   -webkit-transform:skew(8deg) rotate(3deg) !important;
-//   -moz-transform:skew(8deg) rotate(3deg) !important;
-//   -ms-transform:skew(8deg) rotate(3deg) !important;
-//   -o-transform:skew(8deg) rotate(3deg) !important;
-//   transform:skew(8deg) rotate(3deg) !important;
-// }
 
 h1#profilesetup {
   margin-top: 75px;
   margin-bottom: 20px;
+}
+
+#steps form legend {
+  background-color: #8DB3A9;
+  border: none;
+}
+
+#steps{
+  background-color: #8DB3A9;
+}
+
+.basics, .physical, .about, .account {
+  color: #FFF6C4 !important;
+  text-shadow: none !important;
+  font-weight: normal !important;
+  margin-left: 90px !important;
+}
+
+#profilesetup {
+  color: #B56C63
+}
+
+#registerButton {
+  background-color: #5A6E79 !important;
+  font-weight: normal !important;
+}
+
+#registerButton:hover {
+  background-color: #B56C63 !important;
+  color: #FFF6C4 !important;
+  text-shadow: none !important;
+}
+
+ul.navigation {
+  margin-bottom: 0px !important;
+}
+
+#navigation {
+  background-color: #8DB3A9;
+  //margin: 10px;
+  //padding-left: -10px !important;
+  border: none !important;
+  height: 55px;
+}
+
+ul.navigation li {
+  width: 138px;
+  margin: 0px !important;
+}
+
+#navigation ul li a:hover {
+  background-color: #5A6E79;
+  color: white;
+  text-shadow: none !important;
+  border: none;
+}
+
+#navigation ul li.selected {
+  background-color: #B56C63 !important;
+}
+
+.setup {
+  text-align: left !important;
 }
 
 /* PROFILE VIEW STYLING */
@@ -421,7 +374,7 @@ background-image: linear-gradient(to bottom, #949E88 0%, #BCC4B5 100%);
 #toUser, #fromUser {
   margin-bottom: 10px;
   font-size: 17px;
-  color: #B56C63;
+  color: #5A6E79;
 }
 
 #subject.form-control, #messagebody {
@@ -569,12 +522,18 @@ a.navbar-text {
 }
 
 /* Dashboard Page Design */
+
+.a_demo_four.view:hover, .a_demo_four.edit:hover {
+  text-decoration: none;
+  color: #B56C63;
+}
+
 /* Search Section */
 
 .searchlegend {
   width: 100% !important;
   text-align: center !important;
-  background-color: white !important;
+  background-color: #8DB3A9 !important;
   color: #444444 !important;
   text-shadow: none !important;
   font-weight: normal !important;
@@ -595,132 +554,15 @@ legend.searchlegend.s{
 #steps.step.cover{
   width: 40% !important;
   margin: 20px !important;
+  border-radius: 20px;
+  box-shadow: 4px 4px 7px #545454 !important;
 }
 
-<<<<<<< HEAD
-#wrapper h1 {
-  -webkit-text-fill-color: #5A6E79 !important;
-  //color: blue !important;
-}
-
-#wrapper p.button input {
-  background-color: #5A6E79;
-  border: none !important;
-}
-
-#wrapper p.button input:hover {
-  background-color: #A4ACAF;
-}
-
-#wrapper p.change_link a {
-  color: #6A9FAB;
-}
-
-#wrapper p.change_link a:hover {
-  color: #5A6E79;
-  border-color: #5A6E79;
-}
-
-#messageh1 {
-  margin-top: 100px;
-  color: #B56C63;
-}
-
-#sendmessage {
-  background-color: #8DB3A9;
-  border-color: #8DB3A9;
-}
-
-#sendmessage:hover {
-  background-color: #5A6E79;
-  border-color: #5A6E79;
-  color: #FFF6C4;
-}
-
-#steps form legend {
-  background-color: #8DB3A9;
-  border: none;
-}
-
-.basics, .physical, .about, .account {
-  color: #FFF6C4 !important;
-  text-shadow: none !important;
-  font-weight: normal !important;
-  margin-left: 90px !important;
-}
-
-#profilesetup {
-  color: #B56C63
-}
-
-#registerButton {
-  background-color: #5A6E79 !important;
-  font-weight: normal !important;
-}
-
-#registerButton:hover {
-  background-color: #B56C63 !important;
-  color: #FFF6C4 !important;
-  text-shadow: none !important;
-}
-
-ul.navigation {
-  margin-bottom: 0px !important;
-}
-
-#navigation {
-  background-color: #8DB3A9;
-  //margin: 10px;
-  //padding-left: -10px !important;
-  border: none !important;
-  height: 55px;
-}
-
-ul.navigation li {
-  width: 138px;
-  margin: 0px !important;
-}
-
-#navigation ul li a:hover {
-  background-color: #5A6E79;
-  color: white;
-  text-shadow: none !important;
-  border: none;
-}
-
-#navigation ul li.selected {
-  background-color: #B56C63 !important;
-}
-
-#activityname {
-  margin-top: 100px;
-  font-weight: bolder;
-  color: #8DB3A9;
-}
-
-p.activity {
-  font-size: 20px;
-  font-weight: bolder;
-  color: #B56C63;
-}
-
-h4 {
-  color: #5A6E79;
-}
-
-// .rsvp {
-//   background-color:
-// }
-
-#steps form p label {
-  text-align: left;
-}
-=======
 #steps.step.cover.right{
   position: absolute;
   right: 20px;
-  border: 1px solid black;
-  border-radius: 7px;
+  //border: 1px solid black;
+  border-radius: 20px;
   height: 350px;
 }
 
@@ -815,14 +657,16 @@ select.selects {
 #steps.step.cover.clear{
   height: 500px;
   clear: both;
-  border-radius: 7px;
+  border-radius: 20px;
   overflow: auto;
-  background: white;
+  background-color: #8DB3A9;
   border-radius: 7px;
 }
 
-.actH3{
-  border-bottom: 2px solid black;
+.actH3.inbox {
+  border-bottom: 2px solid #4B3F39;
+  padding-bottom: 20px;
+  margin: 10px;
 }
 
 .activity {
@@ -833,13 +677,19 @@ select.selects {
 }
 
 .activity:nth-child(even) {
-  background-color: #BCBCBC;
+  background-color: #F5EEDF;
   border-radius: 7px;
 }
 
-.activityname, .activitydate, .activitydescription {
+.activityname a, .activitydate a, .activitydescription a {
   margin-bottom: 10px;
   diplay: inline-block;
+  color: #B56C63;
+}
+
+.activityname a:hover {
+  text-decoration: none !important;
+  color: #5A6E79;
 }
 
 .activityname {
@@ -851,6 +701,7 @@ select.selects {
 #steps.step.cover.clear.right{
   top: 500px;
   height: 620px;
+  border-radius: 20px;
 }
 
 // .row {
@@ -938,4 +789,77 @@ select.selects {
 //   margin-right: 230px;
 //   margin-top: -455px;
 // }
->>>>>>> front-end
+
+/* Writing a Message Styling */
+
+#messagediv {
+  border-radius: 20px;
+  //border: 1px solid black;
+  width: 700px;
+  margin: auto;
+  height: 450px;
+  margin-top: 100px;
+  background-color: #8DB3A9;
+  box-shadow: 4px 4px 7px #545454 !important;
+}
+
+#messageh1 {
+  padding-top: 30px;
+  color: #FDFEE9;
+}
+
+#sendmessage {
+  background-color: #B56C63;
+  border-color: #B56C63;
+  color: #FDFEE9;
+  margin-top: 20px;
+}
+
+#sendmessage:hover {
+  background-color: #5A6E79;
+  border-color: #5A6E79;
+  color: #FFF6C4;
+}
+
+/* Activity Show Page Styling */
+
+#showactivity {
+  border-radius: 20px;
+  //border: 1px solid black;
+  width: 700px;
+  margin: auto;
+  height: 400px;
+  margin-top: 100px;
+  background-color: #8DB3A9;
+  box-shadow: 4px 4px 7px #545454 !important;
+  padding-top: 15px;
+}
+
+#activityname {
+  //margin-top: 100px !important;
+  font-weight: bold;
+  color: #FDFEE9;
+}
+
+p.activityinfo {
+  font-size: 20px;
+  font-weight: bolder;
+  color: #B56C63;
+}
+
+h4 {
+  color: #5A6E79;
+}
+
+.rsvp {
+  margin-top: 10px;
+  background-color: #FDFEE9;
+  border-color: #FDFEE9;
+  color: #B56C63;
+}
+
+.rsvp:hover {
+  background-color: #B56C63;
+  border-color: #B56C63;
+  color: #FDFEE9;
+}
