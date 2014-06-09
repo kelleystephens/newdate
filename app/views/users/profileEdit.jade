@@ -12,85 +12,86 @@ block content
             p
               label.setup Sex
               select#sex(name='sex')
-                option(value='male') Male
-                option(value='female') Female
+                option(value='male', selected=user.sex === 'male') Male
+                option(value='female', selected=user.sex === 'female') Female
             p
               label.setup Looking For
               select#lookingFor(name='lookingFor')
-                option(value='male') Male
-                option(value='female') Female
-                option(value='male, female') Both
+                option(value='male', selected=user.lookingFor === '[male]') Male
+                option(value='female', selected=user.lookingFor === '[female]') Female
+                option(value='male, female', selected=user.lookingFor === '[male, female]') Both
             p
               label.setup Race
               select#race(name='race')
-                option(value='white') White
-                option(value='black') Black
-                option(value='asian') Asian
-                option(value='american indian') American Indian
-                option(value='pacific islander') Pacific Islander
-                option(value='hispanic') Hispanic
-                option(value='mixed') Mixed
-                option(value='other') Other
+                option(value='white', selected=user.race === 'white') White
+                option(value='black', selected=user.race === 'black') Black
+                option(value='asian', selected=user.race === 'asian') Asian
+                option(value='american indian', selected=user.race === 'american indian') American Indian
+                option(value='pacific islander', selected=user.race === 'pacific islander') Pacific Islander
+                option(value='hispanic', selected=user.race === 'hispanic') Hispanic
+                option(value='mixed', selected=user.race === 'mixed') Mixed
+                option(value='other', selected=user.race === 'other') Other
             p
               label.setup Religion
               select#religion(name='religion')
-                option(value='christian') Christian
-                option(value='jewish') Jewish
-                option(value='muslim') Muslim
-                option(value='hindu') Hindu
-                option(value='buddhist') Buddhist
-                option(value='atheist') Atheist
-                option(value='agnostic') Agnostic
-                option(value='other') Other
-                option(value='none') None
+                option(value='christian', selected=user.religion === 'christian') Christian
+                option(value='jewish', selected=user.religion === 'jewish') Jewish
+                option(value='muslim', selected=user.religion === 'muslim') Muslim
+                option(value='hindu', selected=user.religion === 'hindu') Hindu
+                option(value='buddhist', selected=user.religion === 'buddhist') Buddhist
+                option(value='atheist', selected=user.religion === 'atheist') Atheist
+                option(value='agnostic', selected=user.religion === 'agnostic') Agnostic
+                option(value='other', selected=user.religion === 'other') Other
+                option(value='none', selected=user.religion === 'none') None
           fieldset.step
             legend.physical Physical
             p
               label.setup Age
-              input#age(name='age' type='number' min='18' placeholder='31')
+              input#age(name='age' type='number' min='18' placeholder='31' value=user.age)
             p
               label.setup Body Type
               select#bodyType(name='bodyType')
-                option(value='slender') Slender
-                option(value='petite') Petite
-                option(value='fit') Fit
-                option(value='athletic') Athletic
-                option(value='ripped') Ripped
-                option(value='hour glass with extra minutes') Hour Glass With Extra Minutes
-                option(value='more to love') More To Love
-                option(value='stocky') Stocky
+                option(value='slender', selected=user.bodyType === 'slender') Slender
+                option(value='petite', selected=user.bodyType === 'petite') Petite
+                option(value='fit', selected=user.bodyType === 'fit') Fit
+                option(value='athletic', selected=user.bodyType === 'athletic') Athletic
+                option(value='ripped', selected=user.bodyType === 'ripped') Ripped
+                option(value='hour glass with extra minutes', selected=user.bodyType === 'hour glass with extra minutes') Hour Glass With Extra Minutes
+                option(value='more to love', selected=user.bodyType === 'more to love') More To Love
+                option(value='stocky', selected=user.bodyType === 'stocky') Stocky
             p
               label.setup Height
               select#height(name='height')
-                option(value='u59') Under 4'11"
-                option(value='59') 4'11"
-                option(value='60') 5'0"
-                option(value='61') 5'1"
-                option(value='62') 5'2"
-                option(value='63') 5'3"
-                option(value='64') 5'4"
-                option(value='65') 5'5"
-                option(value='66') 5'6"
-                option(value='67') 5'7"
-                option(value='68') 5'8"
-                option(value='69') 5'9"
-                option(value='70') 5'10"
-                option(value='71') 5'11"
-                option(value='72') 6'0"
-                option(value='73') 6'1"
-                option(value='74') 6'2"
-                option(value='75') 6'3"
-                option(value='76') 6'4"
-                option(value='77') 6'5"
-                option(value='o77') Above 6'5"
-            p
-              label.setup Upload a Profile Picture
-              input(type='file', name='photo')
+                option(value='u59', selected=user.height === 'u59') Under 4'11"
+                option(value='59', selected=user.height === '59') 4'11"
+                option(value='60', selected=user.height === '60') 5'0"
+                option(value='61', selected=user.height === '61') 5'1"
+                option(value='62', selected=user.height === '62') 5'2"
+                option(value='63', selected=user.height === '63') 5'3"
+                option(value='64', selected=user.height === '64') 5'4"
+                option(value='65', selected=user.height === '65') 5'5"
+                option(value='66', selected=user.height === '66') 5'6"
+                option(value='67', selected=user.height === '67') 5'7"
+                option(value='68', selected=user.height === '68') 5'8"
+                option(value='69', selected=user.height === '69') 5'9"
+                option(value='70', selected=user.height === '70') 5'10"
+                option(value='71', selected=user.height === '71') 5'11"
+                option(value='72', selected=user.height === '72') 6'0"
+                option(value='73', selected=user.height === '73') 6'1"
+                option(value='74', selected=user.height === '74') 6'2"
+                option(value='75', selected=user.height === '75') 6'3"
+                option(value='76', selected=user.height === '76') 6'4"
+                option(value='77', selected=user.height === '77') 6'5"
+                option(value='o77', selected=user.height === 'o77') Above 6'5"
+            if(!user.photo)
+              p
+                label.setup Upload a Profile Picture
+                input(type='file', name='photo')
           fieldset.step
             legend.about About
             p
               label.setup Tell Us More About Yourself!
-              textarea#about(name='about' rows='10' columns='50' placeholder='Hobbies, Favorites, Likes, Dislikes')
+              textarea#about(name='about' rows='10' columns='50' placeholder='Hobbies, Favorites, Likes, Dislikes') #{user.about}
           fieldset.step
             legend.account Account - Confirm your information:
             p
