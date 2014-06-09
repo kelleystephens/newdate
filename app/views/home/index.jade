@@ -1,5 +1,40 @@
 extends ../shared/template
 
 block content
-  //- h1 Dating App
-  
+  #sky
+  #sun_yellow
+  #sun_red
+  #clouds
+  #ground
+  #night
+  #stars
+  #sstar
+  #moon
+  #title
+  div
+    a#start(href='/login')
+  div
+    a#start2(href='/login') Login/Register
+
+block scripts
+  script(type='text/javascript' src='/js/vendor/jquery.color.js')
+  script.
+    $(function() {
+        $('#sun_yellow').animate({'top':'96%','opacity':0.4}, 10000,function(){
+            $('#stars').animate({'opacity':1}, 4000,function(){
+                $('#moon').animate({'top':'30%','opacity':1}, 4000, function(){
+                    $('#sstar').animate({'opacity':1}, 250);
+                    $('#sstar').animate({
+                        'backgroundPosition':'0px 0px','top':'15%', 'opacity':0
+                    }, 450,function(){
+                        $('#title').animate({'opacity':1}, 900);
+                        $('#start').animate({'opacity':1}, 2000);
+                    });
+                });
+            });
+        });
+        $('#sun_red').animate({'top':'96%','opacity':0.8}, 10000);
+        $('#sky').animate({'backgroundColor':'#4F0030'}, 16000);
+        $('#clouds').animate({'backgroundPosition':'1000px 0px','opacity':0}, 28000);
+        $('#night').animate({'opacity':0.8}, 18000);
+    });

@@ -9,14 +9,12 @@ class Message{
     var message = new Message();
     message._id = Mongo.ObjectID(obj._id);
     message.toUserId = Mongo.ObjectID(obj.toUserId);
-    message.to = obj.to;
     message.fromUserId = Mongo.ObjectID(obj.fromUserId);
     message.isRead = false;
     message.subject = obj.subject;
     message.body = obj.body;
     message.sentDate = new Date();
     messageCollection.save(message, ()=>fn(message));
-    // activity.save(()=>fn(activity));
   }
 
   static findAllByToUserId(toUserId, fn){
@@ -49,6 +47,10 @@ class Message{
 
     if(!this.isRead){
       classes.push('unread');
+    }
+
+    if(this.isRead){
+      classes.push('read');
     }
 
     return classes.join(' ');

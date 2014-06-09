@@ -3,18 +3,39 @@ extends ../shared/template
 block content
   .container-fluid
     #steps.step.cover
-      form#formElem(name='formElem', action='', method='post')
+      form#formElem(name='formElem', action='/search', method='get')
         fieldset.step.holder
           legend.searchlegend.s Search
           p.allp
+            label.labels Distance:
+            select.selects#maxDistance(name='maxDistance')
+              option(value='30') Select Distance
+              option(value='5') Within 5 miles
+              option(value='10') Within 10 miles
+              option(value='15') Within 15 miles
+              option(value='30') Within 30 miles
+              option(value='60') Within 60 miles
+          p.allp
             label.labels Age
-            select.selects#age(name='age')
+            select.selects#age(name='ageRange')
               option(value='any') Select Age Range
               option(value='5') Within 5 years
               option(value='10') Within 10 years
               option(value='15') Within 15 years
               option(value='20') Within 20 years
               option(value='any') No Preference
+          p.allp
+            label.labels Race
+            select.selects#race(name='race')
+              option(value='any') Select Race
+              option(value='white') White
+              option(value='black') Black
+              option(value='asian') Asian
+              option(value='american indian') American Indian
+              option(value='pacific islander') Pacific Islander
+              option(value='hispanic') Hispanic
+              option(value='mixed') Mixed
+              option(value='other') Other
           p.allp
             label.labels Religion
             select.selects#religion(name='religion')
@@ -31,7 +52,7 @@ block content
               option(value='any') No Preference
           p.allp
             label.labels Height
-            select.selects#height(name='height')
+            select.selects#height(name='heightRange')
               option(value='any') Select Height
               option(value='u59') Under 4'11"
               option(value='59-64') 4'11" to 5'4"
@@ -39,9 +60,9 @@ block content
               option(value='72-77') 6'0" to 6'5"
               option(value='o77') Above 6'5"
               option(value='any') No Preference
-          p.allp
+          p.allp.last
             label.labels Body Type
-            select.selects#bodytype(name='bodytype')
+            select.selects#bodytype(name='bodyType')
               option(value='any') Select Body Type
               option(value='slender') Slender
               option(value='petite') Petite
@@ -52,14 +73,15 @@ block content
               option(value='more to love') More To Love
               option(value='stocky') Stocky
               option(value='any') No Preference
+        button.btn.search Go
     #steps.step.cover.right
-      #profilepic(style='background-image: url(#{user.photo})')
+      #profilepic(style='background-image: url("#{user.photo}")')
       .btns
         a.a_demo_four.view(href='/profile/#{user._id}') View Profile
       .btns
         a.a_demo_four.edit(href='/profile/#{user._id}/setup') Edit Profile
     #steps.step.cover.clear
-      h3.actH3 Your Upcoming Activities
+      h3.actH3 Available Activities
       if(activities)
         each activity in activities
           .activity
@@ -68,11 +90,11 @@ block content
             .activitydate #{activity.date}
             .activitydescription #{activity.description}
     #steps.step.cover.clear.right
-      h3.actH3 Inbox
+      h3.actH3.inbox Inbox
       if(messages)
         each message in messages
-          .message(class= message.classes)
-            .messagesender #{message.fromUserIds}
-            .messagesubject #{message.subject}
+          .message(class='#{message.classes}')
+            .messagesubject
+              a(href='/message/read/#{message._id}') #{message.subject}
       else
-        .nomsg You Have No Messages
+        h2 You have no messages

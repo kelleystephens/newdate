@@ -1,6 +1,5 @@
 var activityCollection = global.nss.db.collection('activities');
 var Mongo = require('mongodb');
-// var _ = require('lodash');
 var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
 
@@ -15,7 +14,6 @@ class Activity{
     activity.address = obj.address;
     activity.coordinates = obj.coordinates.map(n=>n*1);
     activity.tags = obj.tags.split(',').map(t=>t.trim().toLowerCase());
-    activityCollection.save(activity, ()=>fn(activity));
     activity.save(()=>fn(activity));
   }
 
@@ -39,7 +37,6 @@ class Activity{
     };
 
     this.attendees.push(u);
-
     this.save(()=>fn(this));
   }
 

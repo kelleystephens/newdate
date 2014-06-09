@@ -70,23 +70,29 @@ class User{
       coordinates: {$nearSphere:[lat, lng],$maxDistance:maxDistance}
     };
 
+
     if(user.lookingFor.length === 2){
       filter.$or = [{sex: user.lookingFor[0]}, {sex: user.lookingFor[1]}];
     }else{
       filter.sex = user.lookingFor[0];
     }
 
+
     if(query.race !== 'any'){
       filter.race = query.race;
     }
+
 
     if(query.religion !== 'any'){
       filter.religion = query.religion;
     }
 
+
+
     if(query.bodyType !== 'any'){
       filter.bodyType = query.bodyType;
     }
+
 
     if(query.ageRange !== 'any'){
       var maxAge = user.age + query.ageRange * 1;
@@ -94,7 +100,9 @@ class User{
       filter.age = { $gte: minAge, $lte: maxAge };
     }
 
+
     var height;
+
 
     if(query.heightRange !== 'any'){
       if(query.heightRange === 'u59'){
@@ -109,9 +117,16 @@ class User{
       }
     }
 
+
     userCollection.find(filter).toArray((err, users)=>{
       fn(users);
     });
+  }
+
+  get convertHeight(){
+    var feet = parseInt((this.height*1)/12);
+    var inch = (this.height*1)%12;
+    return `${feet}ft ${inch}in`;
   }
 
   update(obj, fn){

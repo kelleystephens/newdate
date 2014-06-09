@@ -223,7 +223,8 @@ describe('User', function(){
           race: ['black'],
           religion: ['Jewish'],
           bodyType: ['hourglass with extra minutes'],
-          height: ['5-6'],
+          height: ['66'],
+          age: ['23'],
           about: ['I am a successful, independent black woman looking for love.'],
           lookingFor: ['male, female'],
           photo: [{
@@ -244,7 +245,7 @@ describe('User', function(){
           expect(user.race).to.equal('black');
           expect(user.religion).to.equal('Jewish');
           expect(user.bodyType).to.equal('hourglass with extra minutes');
-          expect(user.height).to.equal('5-6');
+          expect(user.height).to.equal('66');
           expect(user.about).to.equal('I am a successful, independent black woman looking for love.');
           done();
         });
@@ -259,7 +260,8 @@ describe('User', function(){
           race: ['black'],
           religion: ['Jewish'],
           bodyType: ['hourglass with extra minutes'],
-          height: ['5-6'],
+          height: ['66'],
+          age: ['23'],
           about: ['I am a successful, independent black woman looking for love.'],
           lookingFor: ['male, female'],
           photo: [{
@@ -280,7 +282,7 @@ describe('User', function(){
           expect(user.race).to.equal('black');
           expect(user.religion).to.equal('Jewish');
           expect(user.bodyType).to.equal('hourglass with extra minutes');
-          expect(user.height).to.equal('5-6');
+          expect(user.height).to.equal('66');
           expect(user.about).to.equal('I am a successful, independent black woman looking for love.');
           done();
         });

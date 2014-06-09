@@ -36,14 +36,14 @@ describe('Activity', function(){
           cp.execFile(__dirname + '/../../pictures/before.sh', {cwd:__dirname + '/../../pictures'}, function(err, stdout, stderr){
             factory('user', function(users){
               var bill = {
-                'sex': 'male',
-                'lookingFor': 'male, female',
-                'race': 'american indian',
-                'religion': 'buddhist',
-                'age': '23',
-                'bodyType': 'athletic',
-                'height': '74',
-                'about': 'looking for hotties',
+                'sex': ['male'],
+                'lookingFor': ['male, female'],
+                'race': ['american indian'],
+                'religion': ['buddhist'],
+                'age': ['23'],
+                'bodyType': ['athletic'],
+                'height': ['74'],
+                'about': ['looking for hotties'],
                 'photo': [{
                   'originalFilename': 'profilePic1.jpg',
                   'path': '../../test/pictures/copy/profilePic1.jpg',
@@ -52,14 +52,14 @@ describe('Activity', function(){
               };
 
               var mark = {
-                'sex': 'male',
-                'lookingFor': 'male',
-                'race': 'black',
-                'religion': 'muslim',
-                'age': '24',
-                'bodyType': 'ripped',
-                'height': '70',
-                'about': 'Im so lonely',
+                'sex': ['male'],
+                'lookingFor': ['male'],
+                'race': ['black'],
+                'religion': ['muslim'],
+                'age': ['24'],
+                'bodyType': ['ripped'],
+                'height': ['70'],
+                'about': ['Im so lonely'],
                 'photo': [{
                   'originalFilename': 'profilePic2.jpg',
                   'path': '../../test/pictures/copy/profilePic2.jpg',
@@ -68,14 +68,14 @@ describe('Activity', function(){
               };
 
               var sue = {
-                'sex': 'female',
-                'lookingFor': 'male',
-                'race': 'black',
-                'religion': 'muslim',
-                'age': '24',
-                'bodyType': 'ripped',
-                'height': '70',
-                'about': 'lyke hiiiiiii!!!!!!!1!',
+                'sex': ['female'],
+                'lookingFor': ['male'],
+                'race': ['black'],
+                'religion': ['muslim'],
+                'age': ['24'],
+                'bodyType': ['ripped'],
+                'height': ['70'],
+                'about': ['lyke hiiiiiii!!!!!!!1!'],
                 'photo': [{
                   'originalFilename': 'profilePic3.jpg',
                   'path': '../../test/pictures/copy/profilePic3.jpg',
@@ -84,14 +84,14 @@ describe('Activity', function(){
               };
 
               var alex = {
-                'sex': 'female',
-                'lookingFor': 'female',
-                'race': 'white',
-                'religion': 'christian',
-                'age': '24',
-                'bodyType': 'slender',
-                'height': '55',
-                'about': 'I want someone to build canoes with',
+                'sex': ['female'],
+                'lookingFor': ['female'],
+                'race': ['white'],
+                'religion': ['christian'],
+                'age': ['24'],
+                'bodyType': ['slender'],
+                'height': ['55'],
+                'about': ['I want someone to build canoes with'],
                 'photo': [{
                   'originalFilename': 'profilePic4.jpg',
                   'path': '../../test/pictures/copy/profilePic4.jpg',
@@ -174,10 +174,10 @@ describe('Activity', function(){
 
   describe('.findById', function () {
     it('should return an activity with matching credentials', function (done) {
-      Activity.findById('0123456789abcdef01234568', function (activity) {
+      Activity.findById('1234567890abcdef12345678', function (activity) {
         expect(activity).to.be.ok;
         expect(activity).to.be.instanceof(Activity);
-        expect(activity._id.toString()).to.equal('0123456789abcdef01234568');
+        expect(activity._id.toString()).to.equal('1234567890abcdef12345678');
         done();
       });
     });
@@ -186,11 +186,11 @@ describe('Activity', function(){
   describe('#rsvp', function () {
     it('should RSVP the user to the event', function (done) {
       User.findById('0123456789abcdef01234567', function (user) {
-        Activity.findById('0123456789abcdef01234568', function (activity) {
+        Activity.findById('1234567890abcdef12345678', function (activity) {
           activity.rsvp(user, function (activity) {
             expect(activity).to.be.ok;
             expect(activity).to.be.instanceof(Activity);
-            expect(activity._id.toString()).to.equal('0123456789abcdef01234568');
+            expect(activity._id.toString()).to.equal('1234567890abcdef12345678');
             done();
           });
         });

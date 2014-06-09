@@ -1,0 +1,14 @@
+extends ../shared/template
+
+block content
+
+
+  #displaymessage
+
+    h2.fromusername From #{user.name}
+    a.visitprofile(href='/profile/#{user._id}') Visit profile
+
+    h3.fromusersubject #{message.subject}
+    h4 #{message.body}
+
+    a.reply.btn.btn-primary(href='/message/#{message.fromUserId}') Reply

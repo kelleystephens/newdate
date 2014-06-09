@@ -13,7 +13,15 @@ exports.write = (req, res)=> {
 };
 
 exports.create = (req, res)=> {
-  Message.create(req.body, m=>{
-    res.send(m);
+  Message.create(req.body, ()=>{
+    res.redirect('/dashboard');
+  });
+};
+
+exports.read = (req, res)=> {
+  Message.findById(req.params.id, message=>{
+    User.findById(message.fromUserId, user=>{
+      res.render('messages/show', {message:message, user:user});
+    });
   });
 };

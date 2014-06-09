@@ -38,7 +38,6 @@ describe('Message', function(){
       var obj = {
         fromUserId:'0123456789abcdef01234567',
         toUserId:'0123456789abcdef01234568',
-        to: 'George Hamilton',
         subject:'Hot stuff',
         body:'Hey there good lookin.',
       };
@@ -49,7 +48,6 @@ describe('Message', function(){
         expect(m._id).to.be.an.instanceof(Mongo.ObjectID);
         expect(m.fromUserId.toString()).to.equal('0123456789abcdef01234567');
         expect(m.toUserId.toString()).to.equal('0123456789abcdef01234568');
-        expect(m.to).to.equal('George Hamilton');
         expect(moment(m.sentDate).format('MM/DD/YYYY')).to.equal(moment().format('MM/DD/YYYY'));
         expect(m.subject).to.equal('Hot stuff');
         expect(m.body).to.equal('Hey there good lookin.');
@@ -65,7 +63,6 @@ describe('Message', function(){
         expect(messages).to.be.ok;
         expect(messages).to.be.an('array');
         expect(messages[0]).to.be.instanceof(Message);
-        // expect(messages[0].subject).to.equal('Hot stuff');
         done();
       });
     });
@@ -77,7 +74,6 @@ describe('Message', function(){
         expect(messages).to.be.ok;
         expect(messages).to.be.an('array');
         expect(messages[0]).to.be.instanceof(Message);
-        // expect(messages[0].subject).to.equal('Hot stuff');
         done();
       });
     });
@@ -107,28 +103,5 @@ describe('Message', function(){
       });
     });
   });
-  //
-  // describe('.findAll', function () {
-  //   it('should find all activity activities', function (done) {
-  //     Activity.findAll(function (activities) {
-  //       expect(activities).to.be.an('array');
-  //       expect(activities[0]).to.be.ok;
-  //       expect(activities[0]).to.be.instanceof(Activity);
-  //       expect(activities[0]._id).to.be.instanceof(Mongo.ObjectID);
-  //       done();
-  //     });
-  //   });
-  // });
-  //
-  // describe('.findById', function () {
-  //   it('should return an activity with matching credentials', function (done) {
-  //     Activity.findById('0123456789abcdef01234568', function (activity) {
-  //       expect(activity).to.be.ok;
-  //       expect(activity).to.be.instanceof(Activity);
-  //       expect(activity._id.toString()).to.equal('0123456789abcdef01234568');
-  //       done();
-  //     });
-  //   });
-  // });
 
 });
