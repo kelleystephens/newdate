@@ -10,17 +10,13 @@ block content
     h4 #{activity.description}
     p.activity Address:
     h4 #{activity.address}
-    p.activity Tags:
-    h4 #{activity.tags}
-
     form(action='/activity/rsvp/#{activity._id}', method='POST')
-      button.btn.btn-primary.rsvp RSVP to this Activity
+      button.btn.btn-primary.rsvp RSVP
 
   #going
 
-    h1.seewhoisgoing See Who's Going
-      each attendee in activity.attendees
-        div.attendee
-          a.showattendeename(href='/profile/#{attendee.userId.toString()}')
-            img.showimage(src='#{attendee.photo}')
-            h1.attendeename #{attendee.name}
+    h1.seewhoisgoing Attendees:
+    each attendee in activity.attendees
+      div.attendee
+        .attendeepic(style='background-image: url("#{user.photo}")')
+        a.showattendeename(href='/profile/#{attendee.userId.toString()}') #{attendee.name}

@@ -807,30 +807,33 @@ a.visitprofile, a.reply {
 
 #showactivity {
   border-radius: 20px;
-  //border: 1px solid black;
   width: 700px;
   margin: auto;
-  height: 450px;
   margin-top: 100px;
   background-color: #8DB3A9;
   box-shadow: 4px 4px 7px #545454 !important;
-  padding-top: 15px;
+  padding: 15px 0px 25px 0px;
 }
 
 #going {
   overflow: auto;
   border-radius: 20px;
   width: 700px;
-  margin: auto;
-  height: 550px;
+  margin: 20px auto;
   background-color: #B56C63;
   box-shadow: 4px 4px 7px #545454 !important;
   padding-top: 15px;
-  margin-top: 20px;
 }
 
-.attendeename {
-  font-size: 20px;
+.attendeepic{
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  right: 100px;
 }
 
 #activityname, .seewhoisgoing {
@@ -839,29 +842,26 @@ a.visitprofile, a.reply {
 }
 
 .attendee {
-  margin-top: 10px;
-}
-
-.showimage {
-  width: 150px;
+  margin: 10px;
 }
 
 .showattendeename {
+  font-size: 30px;
+  margin: 20px;
+  position: relative;
+  bottom: 100px;
+  right: 75px;
+  color: #5A6E79;
   text-decoration: none !important;
   font-weight: bold;
-  color: #8DB3A9;
 }
 
 .showattendeename:hover {
-  color: #5A6E79;
+  color: #8DB3A9;
+  text-decoration: none !important;
 }
 
-.attendee:nth-child(even) {
-  background-color: #F5EEDF;
-  border-radius: 7px;
-}
-
-p.activityinfo {
+p.activity {
   font-size: 20px;
   font-weight: bolder;
   color: #B56C63;
@@ -876,7 +876,7 @@ h4 {
   display: block;
 }
 
-#toUser, #fromUser {
+#toUser, #fromUser, #date {
   margin-bottom: 10px;
   font-size: 17px;
   color: #B56C63;
@@ -892,6 +892,7 @@ h4 {
   background-color: #FDFEE9;
   border-color: #FDFEE9;
   color: #B56C63;
+  box-shadow: 3px 3px 2px #838383;
 }
 
 .rsvp:hover {
@@ -916,7 +917,7 @@ h4 {
   }
 
   .resultinfo{
-    top: 60px;
+    top: 25px;
     float: right;
     position: relative;
     text-align: center;
@@ -925,18 +926,12 @@ h4 {
     .resultname {
       font-size: 40px;
     }
-
-    // .resultlink{
-    //   font-size: 20px;
-    //   color: inherit;
-    // }
-
   }
 }
 
 .img{
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
