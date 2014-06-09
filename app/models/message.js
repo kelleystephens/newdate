@@ -58,6 +58,10 @@ class Message{
       classes.push('unread');
     }
 
+    if(this.isRead){
+      classes.push('read');
+    }
+
     return classes.join(' ');
   }
 
