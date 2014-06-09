@@ -26,7 +26,7 @@ exports.all = (req, res)=> {
 
 exports.profile = (req, res)=> {
   User.findById(req.params.id.toString(), user=>{
-    res.render('users/profile', {user: user, title: `${user.name}`});
+    res.render('users/profile', {user1: user, title: `${user.name}`});
   });
 };
 
