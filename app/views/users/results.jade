@@ -3,10 +3,29 @@ extends ../shared/template
 block content
   if(results)
     each result in results
-      div.result
-        .img(style='background-image: url("#{result.photo}")')
-        .resultinfo
-          .resultname Name: #{result.name}
-          a.resultlink(href='/profile/#{result._id}') View #{result.name}'s Profile
+      if(result.sex === 'male')
+        div.result#contain
+          .img(style='background-image: url("#{result.photo}"); background-size: cover;')
+          .resultinfo
+            .resultname Name: #{result.name}
+            div.button-holder
+              div.center-content
+                a.type-3(href='/profile/#{result._id}')
+                  span View
+                  span View
+                  span View
+
+      if(result.sex === 'female')
+        div.result#contain2
+          .img(style='background-image: url("#{result.photo}"); background-size: cover;')
+          .resultinfo
+            .resultname Name: #{result.name}
+            div.button-holder
+              div.center-content
+                a.type-3(href='/profile/#{result._id}')
+                  span View
+                  span View
+                  span View
+
   else
     h1 Sorry, your search did not return any results.
