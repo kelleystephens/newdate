@@ -1,7 +1,7 @@
 extends ../shared/template
 
 block content
-  if(user.sex === 'male')
+  if(user1.sex === 'male')
     body#background
       #contain
         .container
@@ -50,4 +50,4 @@ block content
               #religion Religion: #{user1.religion}
               #age Age: #{user1.age}
               #bodyType Body Type: #{user1.bodyType}
-              #height Height: #{user1.height}
+              #height Height: #{user1.convertHeight}

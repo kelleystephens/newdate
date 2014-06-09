@@ -124,6 +124,8 @@ class User{
   }
 
   get convertHeight(){
+    console.log('GETTER!!!');
+    console.log(this);
     var feet = parseInt((this.height*1)/12);
     var inch = (this.height*1)%12;
     return `${feet}ft ${inch}in`;

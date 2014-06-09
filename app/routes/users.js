@@ -15,13 +15,7 @@ exports.index = (req, res)=>{
 
 exports.logout = (req, res)=> {
   req.session.userId = null;
-  res.redirect('/');
-};
-
-exports.all = (req, res)=> {
-  User.findAll(users=>{
-    res.render('users/all', {users: users, title: 'All Users'});
-  });
+  res.redirect('/login');
 };
 
 exports.profile = (req, res)=> {
@@ -63,7 +57,7 @@ exports.register = (req, res)=> {
       res.send(u);
     } else {
       req.session.userId = null;
-      res.redirect('/');
+      res.redirect('/login');
     }
   });
 };
@@ -82,19 +76,13 @@ exports.login = (req, res, next)=> {
       res.redirect('/dashboard');
     } else {
       req.session.userId = null;
-      res.redirect('/');
+      res.redirect('/login');
     }
   });
 };
 
 exports.search = (req, res)=>{
   User.search(req.query, res.locals.user, results=>{
-    console.log('req.query: ');
-    console.log(req.query);
-    console.log('res.locals.user: ');
-    console.log(res.locals.user);
-    console.log('results of search: ');
-    console.log(results);
     res.render('users/results', {results:results});
   });
 };
