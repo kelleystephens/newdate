@@ -3,12 +3,10 @@ extends ../shared/template
 block content
 
   #messagediv
-
     h1#messageh1 Message
-
     #toUser To: #{toUser.name}
     #fromUser From: #{fromUser.name}
-    //#date #{message.sentDate}
+    #date= moment().format('MM/DD/YYYY')
 
     form(action='/message/#{toUser._id}', method='post')
       input(type='hidden', value='#{fromUser._id}', name='fromUserId')

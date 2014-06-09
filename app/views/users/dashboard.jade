@@ -7,6 +7,15 @@ block content
         fieldset.step.holder
           legend.searchlegend.s Search
           p.allp
+            label.labels Distance:
+            select.selects#maxDistance(name='maxDistance')
+              option(value='30') Select Distance
+              option(value='5') Within 5 miles
+              option(value='10') Within 10 miles
+              option(value='15') Within 15 miles
+              option(value='30') Within 30 miles
+              option(value='60') Within 60 miles
+          p.allp
             label.labels Age
             select.selects#age(name='ageRange')
               option(value='any') Select Age Range
@@ -51,7 +60,7 @@ block content
               option(value='72-77') 6'0" to 6'5"
               option(value='o77') Above 6'5"
               option(value='any') No Preference
-          p.allp
+          p.allp.last
             label.labels Body Type
             select.selects#bodytype(name='bodyType')
               option(value='any') Select Body Type
@@ -66,7 +75,7 @@ block content
               option(value='any') No Preference
         button.btn.search Go
     #steps.step.cover.right
-      #profilepic(style='background-image: url(#{user.photo})')
+      #profilepic(style='background-image: url("#{user.photo}")')
       .btns
         a.a_demo_four.view(href='/profile/#{user._id}') View Profile
       .btns
