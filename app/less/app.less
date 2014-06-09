@@ -235,6 +235,7 @@ ul.navigation li {
   background-image: -ms-linear-gradient(bottom, #8F785E 0%, #5E472D 100%);
   background-image: linear-gradient(to bottom, #8F785E 0%, #5E472D 100%);
 }
+
 #name1:before {
   content:"";
   position: absolute;
@@ -350,12 +351,6 @@ ul.navigation li {
   text-transform: capitalize;
 }
 
-// .activitydescription {
-//   border-bottom: 1px solid gray;
-//   padding-bottom: 5px;
-//   border-length: 10px;
-// }
-
 #subject, #messagebody {
   margin: auto;
   display: block;
@@ -396,14 +391,9 @@ a.navbar-text {
 
 .navbar-text {
   color: #ADB3B1 !important;
-  // color: #9C3158 !important;
   margin: 0px;
 }
 
-// .li:hover {
-//   background-color: #5E7788 !important;
-//   color: #FFF6C4 !important;
-// }
 
 .navbar-text:hover {
   color: #FFF6C4 !important;
@@ -420,11 +410,8 @@ a.navbar-text {
   background-cover: cover;
   width: 600px;
   height: 150px;
-  //margin-bottom: 200px;
-  //float: left;
   margin: auto !important;
   text-align: center !important;
-  //margin-right: 470px !important;
 }
 
 /* Message Me Buttons */
@@ -731,6 +718,60 @@ button.btn.search:hover{
   border-radius: 20px;
 }
 
+.messagesubject a {
+  text-decoration: none !important;
+  float: left;
+  margin-left: 30px;
+  font-size: 20px;
+  color: #F5EEDF;
+}
+
+.message {
+  display: block !important;
+  height: 50px;
+}
+
+.messagesubject a:hover {
+  color: #B56C63;
+}
+
+#displaymessage {
+  border-radius: 20px;
+  width: 700px;
+  margin: auto;
+  height: 450px;
+  margin-top: 100px;
+  background-color: #8DB3A9;
+  box-shadow: 4px 4px 7px #545454 !important;
+  padding-top: 15px;
+  overflow: auto;
+}
+
+a.visitprofile, a.reply {
+  text-decoration: none !important;
+  font-size: 15px;
+}
+
+.visitprofile {
+  color: #B56C63;
+}
+
+.visitprofile:hover {
+  color: #F5EEDF;
+}
+
+.reply {
+  background-color: #F5EEDF;
+  border-color: #F5EEDF;
+  color: #B56C63;
+}
+
+.reply:hover {
+  background-color: #5A6E79;
+  border-color: #5A6E79;
+  color: #F5EEDF;
+}
+
 /* Writing a Message Styling */
 
 #messagediv {
@@ -769,17 +810,55 @@ button.btn.search:hover{
   //border: 1px solid black;
   width: 700px;
   margin: auto;
-  height: 400px;
+  height: 450px;
   margin-top: 100px;
   background-color: #8DB3A9;
   box-shadow: 4px 4px 7px #545454 !important;
   padding-top: 15px;
 }
 
-#activityname {
-  //margin-top: 100px !important;
+#going {
+  overflow: auto;
+  border-radius: 20px;
+  width: 700px;
+  margin: auto;
+  height: 550px;
+  background-color: #B56C63;
+  box-shadow: 4px 4px 7px #545454 !important;
+  padding-top: 15px;
+  margin-top: 20px;
+}
+
+.attendeename {
+  font-size: 20px;
+}
+
+#activityname, .seewhoisgoing {
   font-weight: bold;
   color: #FDFEE9;
+}
+
+.attendee {
+  margin-top: 10px;
+}
+
+.showimage {
+  width: 150px;
+}
+
+.showattendeename {
+  text-decoration: none !important;
+  font-weight: bold;
+  color: #8DB3A9;
+}
+
+.showattendeename:hover {
+  color: #5A6E79;
+}
+
+.attendee:nth-child(even) {
+  background-color: #F5EEDF;
+  border-radius: 7px;
 }
 
 p.activityinfo {
@@ -807,10 +886,6 @@ h4 {
   width: 550px;
   margin-bottom: 10px;
 }
-
-// .rsvp {
-//   background-color:
-// }
 
 .rsvp {
   margin-top: 10px;

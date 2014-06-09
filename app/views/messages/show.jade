@@ -2,10 +2,13 @@ extends ../shared/template
 
 block content
 
-  h1 From #{user.name}
-  a(href='/profile/#{user._id}') Visit profile
 
-  h2 #{message.subject}
-  h4 #{message.body}
+  #displaymessage
 
-  a(href='/message/#{message.fromUserId}') Reply
+    h2.fromusername From #{user.name}
+    a.visitprofile(href='/profile/#{user._id}') Visit profile
+
+    h3.fromusersubject #{message.subject}
+    h4 #{message.body}
+
+    a.reply.btn.btn-primary(href='/message/#{message.fromUserId}') Reply
