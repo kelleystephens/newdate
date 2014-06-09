@@ -7,10 +7,6 @@ var Message = traceur.require(__dirname + '/../models/message.js');
 exports.write = (req, res)=> {
   User.findById(req.session.userId.toString(), fromUser=>{
     User.findById(req.params.toId.toString(), toUser=>{
-      console.log('fromUser: ');
-      console.log(fromUser);
-      console.log('toUser: ');
-      console.log(toUser);
       res.render('users/message', {fromUser: fromUser, toUser: toUser, title: 'Message'});
     });
   });

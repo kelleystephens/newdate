@@ -15,21 +15,12 @@ class Message{
     message.body = obj.body;
     message.sentDate = new Date();
     messageCollection.save(message, ()=>fn(message));
-    // activity.save(()=>fn(activity));
   }
 
   static findAllByToUserId(toUserId, fn){
-    console.log('toUserId: ');
-    console.log(toUserId);
     toUserId = Mongo.ObjectID(toUserId);
-    console.log('MOD toUserId: ');
-    console.log(toUserId);
     messageCollection.find({toUserId:toUserId}).sort({sentDate: -1}).toArray((e,objs)=>{
-      console.log('Objs returned: ');
-      console.log(objs);
       objs = objs.map(o=>_.create(Message.prototype, o));
-      console.log('Objs mapped: ');
-      console.log(objs);
       fn(objs);
     });
   }

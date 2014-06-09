@@ -8,6 +8,11 @@ var User = traceur.require(__dirname + '/../models/user.js');
 var Activity = traceur.require(__dirname + '/../models/activity.js');
 var Message = traceur.require(__dirname + '/../models/message.js');
 
+exports.index = (req, res)=>{
+  res.render('users/index', {title: 'Login'});
+};
+
+
 exports.logout = (req, res)=> {
   req.session.userId = null;
   res.redirect('/');

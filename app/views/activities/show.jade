@@ -18,5 +18,5 @@ block content
     h1.seewhoisgoing Attendees:
     each attendee in activity.attendees
       div.attendee
-        .attendeepic(style='background-image: url("#{user.photo}")')
+        .attendeepic(style='background-image: url("#{attendee.photo}")')
         a.showattendeename(href='/profile/#{attendee.userId.toString()}') #{attendee.name}
